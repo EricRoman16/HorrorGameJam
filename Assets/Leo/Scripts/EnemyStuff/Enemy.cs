@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy
+public static class Enemy
 {
-    public bool isChasing;
-    public bool hasDirectSight;
-    public float ecounterProgress;
-    public float evadeProgress;
+    public static int enemyRoomID;
+    public static bool isChasing;
+    public static bool hasDirectSight;
+    public static float chaseProgress;
 }
