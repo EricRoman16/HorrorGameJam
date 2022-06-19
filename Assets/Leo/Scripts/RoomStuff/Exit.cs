@@ -6,6 +6,6 @@ using UnityEngine;
 public class Exit
 {
     public int exitID;
-    public int connectingRoomID;
-    public string exitType;
+    //public int connectingRoomID;
+    //public string exitType;
 }
