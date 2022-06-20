@@ -28,6 +28,7 @@ public class DoorScript : MonoBehaviour
         {
             go.transform.position = transform.GetChild(1 - index).GetChild(0).position;
             transform.GetChild(1 - index).GetComponent<DoorCollision>().usable = false;
+            RoomPathfinder.currentPathfinder.UpdatePath(GameObject.Find("Door").transform.GetChild(0), transform.GetChild(1 - index));
         }
     }
 
