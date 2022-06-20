@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DoorCollision : MonoBehaviour
 {
+    
+    public RoomScript room;
     DoorScript door;
     public bool usable;
     // Start is called before the first frame update

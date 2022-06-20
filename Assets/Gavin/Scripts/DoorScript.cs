@@ -6,7 +6,6 @@ using System.Linq;
 
 public class DoorScript : MonoBehaviour
 {
-    public RoomScript[] connectedRooms;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,24 +31,6 @@ public class DoorScript : MonoBehaviour
         }
     }
 
-    void UpdateRooms()
-    {
-        if(connectedRooms == null || connectedRooms.Length < 2)
-        {
-            connectedRooms = new RoomScript[2];
-        }
-        
-        if(connectedRooms[0] == null)
-        {
-
-            connectedRooms[0] = GetClosestRoom(connectedRooms[1]);
-        }
-        
-        if(connectedRooms[1] == null)
-        {
-            connectedRooms[1] = GetClosestRoom(connectedRooms[0]);
-        }
-    }
     RoomScript GetClosestRoom(RoomScript ignoreRoom)
     {
         RoomScript[] rooms = transform.parent.GetComponentsInChildren<RoomScript>();
