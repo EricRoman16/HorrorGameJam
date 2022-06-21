@@ -26,10 +26,25 @@ public class DoorScript : MonoBehaviour
     {
         if(go.name == "Player" || go.name == "Enemy")
         {
-            go.transform.position = transform.GetChild(1 - index).GetChild(0).position;
-            transform.GetChild(1 - index).GetComponent<DoorCollision>().usable = false;
-            RoomPathfinder.currentPathfinder.UpdatePath(GameObject.Find("Door").transform.GetChild(0), transform.GetChild(1 - index));
+            StartCoroutine(DelayMove(go, index));
+            Camera.main.GetComponent<TransitionScript>().StartTransition();
         }
+    }
+
+    IEnumerator DelayMove(GameObject go, int index)
+    {
+        yield return null; 
+        yield return null; 
+        go.transform.position = transform.GetChild(1 - index).GetChild(0).position;
+        transform.GetChild(1 - index).GetComponent<DoorCollision>().usable = false;
+        RoomPathfinder.currentPathfinder.UpdatePath(GameObject.Find("Door").transform.GetChild(0), transform.GetChild(1 - index));
+        transform.GetChild(1 - index).GetComponent<DoorCollision>().room.visible = true;
+        transform.GetChild(index).GetComponent<DoorCollision>().room.visible = false;
+
+
+        Camera.main.transform.position = transform.GetChild(1 - index).GetComponent<DoorCollision>().room.transform.position;
+        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, -10);
+
     }
 
     RoomScript GetClosestRoom(RoomScript ignoreRoom)

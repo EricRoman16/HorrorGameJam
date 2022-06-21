@@ -162,8 +162,15 @@ public class RoomPathfinder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         //Debug.Log(Mathf.RoundToInt(Time.time * 3 % (path.Count-1)));
-        transform.position = path[Mathf.RoundToInt(Time.time * 3 % (path.Count-1))].position;
+        try
+        {
+            transform.position = path[Mathf.RoundToInt(Time.time * 3 % (path.Count - 1))].position;
+        }
+        catch 
+        {
+
+        }
     }
 }

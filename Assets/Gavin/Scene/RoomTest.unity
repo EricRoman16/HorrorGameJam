@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 206610786}
   - component: {fileID: 206610785}
   - component: {fileID: 206610784}
+  - component: {fileID: 206610787}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -286,7 +287,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -333,6 +334,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &206610787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206610783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c7af08a40a5e84eb845c8ecfaaac5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: deaf21d466bd2b74886b3b7503a03864, type: 3}
 --- !u!1001 &352631985
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -400,6 +414,11 @@ PrefabInstance:
       propertyPath: room
       value: 
       objectReference: {fileID: 775747194}
+    - target: {fileID: 6761365834426872119, guid: 30334443e639b804cb89b444ec95a392,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6761365834817244682, guid: 30334443e639b804cb89b444ec95a392,
         type: 3}
       propertyPath: m_RootOrder
@@ -584,6 +603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
+  objectsInRoom: []
+  visible: 0
 --- !u!1 &452983205
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,6 +818,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
+  objectsInRoom: []
+  visible: 0
 --- !u!61 &523765427
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1122,6 +1145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
+  objectsInRoom: []
+  visible: 0
 --- !u!1001 &828099982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1804,6 +1829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
+  objectsInRoom: []
+  visible: 0
 --- !u!1001 &1437512051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2060,6 +2087,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
+  objectsInRoom: []
+  visible: 0
 --- !u!1 &1631153630
 GameObject:
   m_ObjectHideFlags: 0
@@ -2092,6 +2121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
+  objectsInRoom: []
+  visible: 0
 --- !u!61 &1631153632
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2310,6 +2341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
+  objectsInRoom: []
+  visible: 0
 --- !u!1 &1874664475
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,6 +2375,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
+  objectsInRoom: []
+  visible: 0
 --- !u!61 &1874664477
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class DoorCollision : MonoBehaviour
     {
         door = transform.parent.GetComponent<DoorScript>();
         usable = true;
+        room.objectsInRoom.Add(GetComponent<SpriteRenderer>());
     }
 
     // Update is called once per frame
