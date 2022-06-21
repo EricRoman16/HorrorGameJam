@@ -148,7 +148,7 @@ public class RoomPathfinder : MonoBehaviour
         return nodes;
     }
 
-    List<Transform> GetPath(Transform startDoor, Transform endDoor)
+    public List<Transform> GetPath(Transform startDoor, Transform endDoor)
     {
         return GetPath(nodeList.Find(x => x.transform == startDoor), nodeList.Find(x => x.transform == endDoor));
     }
