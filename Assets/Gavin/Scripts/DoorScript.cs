@@ -24,7 +24,7 @@ public class DoorScript : MonoBehaviour
     /// <param name="index">The index of the door that was collided with</param>
     public void DoorHit(GameObject go, int index)
     {
-        if(go.name == "Player")
+        if(go.name == "Player" || go.name == "Enemy")
         {
             go.transform.position = transform.GetChild(1 - index).GetChild(0).position;
             transform.GetChild(1 - index).GetComponent<DoorCollision>().usable = false;

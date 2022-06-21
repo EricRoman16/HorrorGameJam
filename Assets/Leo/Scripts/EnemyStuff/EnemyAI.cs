@@ -32,7 +32,25 @@ public class EnemyAI : MonoBehaviour
 
     private void SetRoamingTarget()
     {
+        //RoomPathfinder.currentPathfinder.GetPath();
+    }
 
+    private void SomeMethod()
+    {
+        //Dictionary<string, List<Transform>> rooms = new Dictionary<string, List<Transform>>();
+
+        //foreach (Transform door in doors)
+        //{
+        //    DoorCollision doorCollision = door.GetComponent<DoorCollision>();
+        //    if (!rooms.ContainsKey(doorCollision.room.name))
+        //    {
+        //        rooms.Add(doorCollision.room.name, new List<Transform> { door });
+        //    }
+        //    else
+        //    {
+        //        rooms[doorCollision.room.name].Add(door);
+        //    }
+        //}
     }
 
     private void SetAlertedTarget()

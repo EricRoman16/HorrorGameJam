@@ -107,7 +107,7 @@ public class RoomPathfinder : MonoBehaviour
     List<Node> CreateLinkedList(List<Transform> doors)
     {
         //Sorting doors by the rooms
-        Dictionary<string, List<Transform>> rooms = new Dictionary<string, List<Transform>>();
+        Dictionary<string, List<Transform>> rooms = new Dictionary<string, List<Transform>>(); 
 
         foreach (Transform door in doors)
         {

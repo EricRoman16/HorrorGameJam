@@ -5,7 +5,7 @@ using UnityEngine;
 public static class Enemy
 {
     public static int enemyRoomID;
-    public static State state;
+    public static State state = State.chasing;
     public static bool hasDirectSight;
 
     public enum State
