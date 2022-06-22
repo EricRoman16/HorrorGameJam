@@ -6,17 +6,6 @@ using System.Linq;
 
 public class DoorScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     /// <summary>
     /// 
     /// </summary>
@@ -24,10 +13,15 @@ public class DoorScript : MonoBehaviour
     /// <param name="index">The index of the door that was collided with</param>
     public void DoorHit(GameObject go, int index)
     {
-        if(go.name == "Player" || go.name == "Enemy")
+        if(go.name == "Player")
         {
             StartCoroutine(DelayMove(go, index));
             Camera.main.GetComponent<TransitionScript>().StartTransition();
+            Enemy.state = Enemy.State.chasing;
+        }
+        else if (go.name == "Enemy")
+        {
+            go.transform.position = transform.GetChild(1 - index).GetChild(0).position;
         }
     }
 

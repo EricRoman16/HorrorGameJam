@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     private bool reachedEndOfPath = false;
 
     private Seeker seeker;
+    public RoomPathfinder pathFinder;
     private Rigidbody2D rb;
 
 
