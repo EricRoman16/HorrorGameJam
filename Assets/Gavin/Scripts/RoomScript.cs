@@ -20,6 +20,7 @@ public class RoomScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         foreach (SpriteRenderer spriteRenderer in objectsInRoom)
         {
             spriteRenderer.enabled = visible;
