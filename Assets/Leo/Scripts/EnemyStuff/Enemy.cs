@@ -4,7 +4,8 @@ using UnityEngine;
 
 public static class Enemy
 {
-    public static int enemyRoomID;
+    public static GameObject currentRoom;
+    public static GameObject target;
     public static State state = State.chasing;
     public static bool hasDirectSight;
 
@@ -15,18 +16,33 @@ public static class Enemy
         chasing
     }
 
-    /// <summary>
-    /// Increase chase progress if player is in the same room as the enemy
-    /// </summary>
+    public static void FindCurrentRoom(GameObject room)
+    {
+        currentRoom = room;
+    }
+
+    public static void SetTarget(GameObject target)
+    {
+        List<Transform> pathToTarget = RoomPathfinder.currentPathfinder.GetPath(currentRoom.transform, target.transform);
+
+        if (pathToTarget != null)
+        {
+            if (pathToTarget.Count > 0)  
+            {
+                if (pathToTarget[1].gameObject.name == "Door (2)")
+                {
+
+                }
+                else
+                {
+
+                }
+            }
+        }
+    }
+
     private static void CheckDirectSight()
     {
-        if (enemyRoomID == 0 /*Player current room ID*/)
-        {
-            hasDirectSight = true;
-        }
-        else
-        {
-            hasDirectSight = false;
-        }
+
     }
 }
