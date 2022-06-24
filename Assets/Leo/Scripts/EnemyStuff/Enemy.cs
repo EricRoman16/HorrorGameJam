@@ -5,8 +5,9 @@ using UnityEngine;
 public static class Enemy
 {
     public static GameObject currentRoom;
-    public static GameObject target;
-    public static State state = State.chasing;
+    public static GameObject currentTarget;
+    public static GameObject currentFinalTarget;
+    public static State state = State.roaming;
     public static bool hasDirectSight;
 
     public enum State
@@ -16,29 +17,33 @@ public static class Enemy
         chasing
     }
 
-    public static void FindCurrentRoom(GameObject room)
+    public static void SetCurrentRoom(GameObject room)
     {
         currentRoom = room;
     }
 
-    public static void SetTarget(GameObject target)
+    public static void SetTarget()
     {
-        List<Transform> pathToTarget = RoomPathfinder.currentPathfinder.GetPath(currentRoom.transform, target.transform);
+        Debug.Log("SetTarget called");
+        GameObject startingDoor = currentRoom.GetComponent<RoomScript>().GetDoorInRoom();
+        List<Transform> pathToTarget = RoomPathfinder.currentPathfinder.GetPath(startingDoor.transform, currentFinalTarget.transform);
 
-        if (pathToTarget != null)
+        if (pathToTarget != null && pathToTarget.Count > 0)
         {
-            if (pathToTarget.Count > 0)  
+            Debug.Log("Path found");
+
+            if (pathToTarget[1].gameObject.name == "Door (1)")
             {
-                if (pathToTarget[1].gameObject.name == "Door (2)")
-                {
-
-                }
-                else
-                {
-
-                }
+                currentTarget = pathToTarget[1].gameObject;
+                return;
+            }
+            else
+            {
+                currentTarget = pathToTarget[0].gameObject;
+                return;
             }
         }
+        state = State.roaming;
     }
 
     private static void CheckDirectSight()

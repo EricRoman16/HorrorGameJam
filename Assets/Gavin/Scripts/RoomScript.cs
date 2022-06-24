@@ -26,25 +26,30 @@ public class RoomScript : MonoBehaviour
         }
     }
 
-    private bool FindDoorsInRoom()
+    /// <summary>
+    /// Returns the first door found in a given room to pass into GetPath
+    /// </summary>
+    /// <returns></returns>
+    public GameObject GetDoorInRoom()
     {
         foreach (SpriteRenderer spriteRenderer in objectsInRoom)
         {
-            if (spriteRenderer.gameObject.name == "Door (1)")
+            if (spriteRenderer.gameObject.name.Contains("Door"))
             {
-
+                return spriteRenderer.gameObject;
             }
         }
-
-        return false;
+        return null;
     }
 
+    // Sets the enemy's current room whenever it enters a new room
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
             //Debug.Log("enter");
-            Enemy.FindCurrentRoom(gameObject);
+            Enemy.SetCurrentRoom(gameObject);
+            Enemy.SetTarget();
         }
     }
 }

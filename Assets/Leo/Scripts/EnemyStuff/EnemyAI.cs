@@ -5,8 +5,6 @@ using Pathfinding;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform currentTarget;
-
     public float chaseSpeed = 200f;
     public float roamSpeed = 50f;
     public float nextWaypointDist = 3f;
@@ -16,7 +14,6 @@ public class EnemyAI : MonoBehaviour
     private bool reachedEndOfPath = false;
 
     private Seeker seeker;
-    public RoomPathfinder pathFinder;
     private Rigidbody2D rb;
 
 
@@ -25,30 +22,23 @@ public class EnemyAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
-        SetTarget();
+        CheckState();
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
 
-    private void SetRoamingTarget()
+    private void CheckState()
     {
-        
-    }
-
-    private void SetAlertedTarget()
-    {
-        //RoomPathfinder.currentPathfinder.GetPath();
-    }
-
-    private void SetTarget()
-    {
-
+        if (Enemy.state != Enemy.State.chasing)
+        {
+            Enemy.currentTarget = null;
+        }
     }
 
     private void UpdatePath()
     {
-        if (seeker.IsDone())
+        if (seeker.IsDone() && Enemy.state == Enemy.State.chasing)
         {
-            seeker.StartPath(rb.position, currentTarget.position, OnPathComplete);
+            seeker.StartPath(rb.position, Enemy.currentTarget.transform.position, OnPathComplete);
         }
     }
 
@@ -63,7 +53,10 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        SetTarget();
+        CheckState();
+        //Debug.Log(Enemy.currentRoom.name);
+        //Debug.Log(Enemy.currentTarget.name);
+        //Debug.Log(Enemy.currentFinalTarget.name);
     }
 
     private void FixedUpdate()
