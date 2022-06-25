@@ -7,12 +7,15 @@ public class DoorCollision : MonoBehaviour
     
     public RoomScript room;
     DoorScript door;
-    public bool usable;
+    public bool playerUsable;
+    public bool enemyUsable;
+
     // Start is called before the first frame update
     void Start()
     {
         door = transform.parent.GetComponent<DoorScript>();
-        usable = true;
+        playerUsable = true;
+        enemyUsable = true;
         room.objectsInRoom.Add(GetComponent<SpriteRenderer>());
     }
 
@@ -23,7 +26,7 @@ public class DoorCollision : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (usable)
+        if ((playerUsable && collision.tag == "Player") || (enemyUsable && collision.tag == "Enemy"))
         {
             door.DoorHit(collision.gameObject, transform.GetSiblingIndex());
         }
@@ -31,6 +34,12 @@ public class DoorCollision : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        usable = true;
+        if (collision.tag == "Player")
+        {
+            playerUsable = true;
+        }else if(collision.tag == "Enemy")
+        {
+            enemyUsable = true;
+        }
     }
 }
