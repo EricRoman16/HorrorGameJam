@@ -16,23 +16,18 @@ public class EnemyAI : MonoBehaviour
     private Seeker seeker;
     private Rigidbody2D rb;
 
+    public GameObject temp;
 
     private void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        Enemy.currentFinalTarget = temp;
+        Enemy.currentTarget = temp;
 
-        CheckState();
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
 
-    private void CheckState()
-    {
-        if (Enemy.state != Enemy.State.chasing)
-        {
-            Enemy.currentTarget = null;
-        }
-    }
 
     private void UpdatePath()
     {
@@ -49,14 +44,6 @@ public class EnemyAI : MonoBehaviour
             path = p;
             currentWaypoint = 0;
         }
-    }
-
-    private void Update()
-    {
-        CheckState();
-        //Debug.Log(Enemy.currentRoom.name);
-        //Debug.Log(Enemy.currentTarget.name);
-        //Debug.Log(Enemy.currentFinalTarget.name);
     }
 
     private void FixedUpdate()

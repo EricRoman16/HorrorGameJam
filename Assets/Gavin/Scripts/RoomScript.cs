@@ -22,7 +22,7 @@ public class RoomScript : MonoBehaviour
     {
         foreach (SpriteRenderer spriteRenderer in objectsInRoom)
         {
-            spriteRenderer.enabled = visible;
+            //spriteRenderer.enabled = visible;
         }
     }
 
@@ -47,7 +47,7 @@ public class RoomScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            //Debug.Log("enter");
+            Debug.Log("enter");
             Enemy.SetCurrentRoom(gameObject);
             Enemy.SetTarget();
         }

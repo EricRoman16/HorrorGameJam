@@ -23,7 +23,7 @@ public class RoomPathfinder : MonoBehaviour
         nodeList = CreateLinkedList(GameObject.FindGameObjectsWithTag("Door").ToList().ConvertAll<Transform>(x => x.transform));
         path = GetPath(nodeList[1], nodeList[15]);
 
-        Debug.Log(path);
+        //Debug.Log(path);
 
         //Testing
         nodeList[nodeI].transform.GetComponent<SpriteRenderer>().color = Color.blue;
@@ -98,7 +98,7 @@ public class RoomPathfinder : MonoBehaviour
             node3.visited = false;
         }
 
-        Debug.Log("c1: " + c1 + "\nc2: " + c2);
+        //Debug.Log("c1: " + c1 + "\nc2: " + c2);
 
         nodePath.Reverse();
         return nodePath.ConvertAll<Transform>(x => x.transform);
@@ -156,7 +156,7 @@ public class RoomPathfinder : MonoBehaviour
     public void UpdatePath(Transform start, Transform end)
     {
         path = GetPath(nodeList[0], nodeList.Find(x => x.transform == end));
-        Debug.Log(path.Count + " : " + nodeList[0].connectedNodes.Count);
+        //Debug.Log(path.Count + " : " + nodeList[0].connectedNodes.Count);
     }
 
     // Update is called once per frame

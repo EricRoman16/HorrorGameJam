@@ -24,15 +24,19 @@ public static class Enemy
 
     public static void SetTarget()
     {
-        Debug.Log("SetTarget called");
+        //Debug.Log("SetTarget called");
+
         GameObject startingDoor = currentRoom.GetComponent<RoomScript>().GetDoorInRoom();
+
         List<Transform> pathToTarget = RoomPathfinder.currentPathfinder.GetPath(startingDoor.transform, currentFinalTarget.transform);
+
+        //Debug.Log(pathToTarget.Count);
 
         if (pathToTarget != null && pathToTarget.Count > 0)
         {
-            Debug.Log("Path found");
+            //Debug.Log("Path found");
 
-            if (pathToTarget[1].gameObject.name == "Door (1)")
+            if (pathToTarget[1].gameObject.GetComponent<DoorCollision>().room == currentRoom)
             {
                 currentTarget = pathToTarget[1].gameObject;
                 return;
