@@ -19,7 +19,7 @@ public class DoorScript : MonoBehaviour
             Camera.main.GetComponent<TransitionScript>().StartTransition();
             Enemy.currentFinalTarget = transform.GetChild(index).gameObject;
             Enemy.SetTarget();
-            Enemy.state = Enemy.State.chasing;
+            Enemy.state = Enemy.State.alerted;
         }
         else if (go.name == "Enemy")
         {

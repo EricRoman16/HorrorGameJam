@@ -24,19 +24,18 @@ public static class Enemy
 
     public static void SetTarget()
     {
-        //Debug.Log("SetTarget called");
-
+        state = State.alerted;
+        Debug.Log("alerted");
         GameObject startingDoor = currentRoom.GetComponent<RoomScript>().GetDoorInRoom();
 
         List<Transform> pathToTarget = RoomPathfinder.currentPathfinder.GetPath(startingDoor.transform, currentFinalTarget.transform);
 
-        //Debug.Log(pathToTarget.Count);
-
-        if (pathToTarget != null && pathToTarget.Count > 0)
+        if (pathToTarget != null && pathToTarget.Count > 2 && state != State.chasing)
         {
-            //Debug.Log("Path found");
+            pathToTarget[0].GetComponent<SpriteRenderer>().color = Color.green;
+            pathToTarget[1].GetComponent<SpriteRenderer>().color = Color.cyan;
 
-            if (pathToTarget[1].gameObject.GetComponent<DoorCollision>().room == currentRoom)
+            if (pathToTarget[1].gameObject.GetComponent<DoorCollision>().room.gameObject == currentRoom)
             {
                 currentTarget = pathToTarget[1].gameObject;
                 return;
@@ -47,7 +46,8 @@ public static class Enemy
                 return;
             }
         }
-        state = State.roaming;
+        Debug.Log("chasing");
+        state = State.chasing;
     }
 
     private static void CheckDirectSight()

@@ -17,6 +17,7 @@ public class EnemyAI : MonoBehaviour
     private Rigidbody2D rb;
 
     public GameObject temp;
+    public GameObject player;
 
     private void Start()
     {
@@ -25,13 +26,13 @@ public class EnemyAI : MonoBehaviour
         Enemy.currentFinalTarget = temp;
         Enemy.currentTarget = temp;
 
-        InvokeRepeating("UpdatePath", 0f, 0.5f);
+        InvokeRepeating("UpdatePath", 0f, 0.2f);
     }
 
 
     private void UpdatePath()
     {
-        if (seeker.IsDone() && Enemy.state == Enemy.State.chasing)
+        if (seeker.IsDone() && Enemy.state == Enemy.State.alerted || Enemy.state == Enemy.State.chasing)
         {
             seeker.StartPath(rb.position, Enemy.currentTarget.transform.position, OnPathComplete);
         }
@@ -43,6 +44,14 @@ public class EnemyAI : MonoBehaviour
         {
             path = p;
             currentWaypoint = 0;
+        }
+    }
+
+    private void Update()
+    {
+        if (Enemy.state == Enemy.State.chasing)
+        {
+            Enemy.currentTarget = player; 
         }
     }
 

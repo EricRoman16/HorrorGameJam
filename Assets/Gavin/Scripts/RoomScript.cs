@@ -47,7 +47,7 @@ public class RoomScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("enter");
+            //Debug.Log("enter");
             Enemy.SetCurrentRoom(gameObject);
             Enemy.SetTarget();
         }
