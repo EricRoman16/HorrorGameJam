@@ -35,6 +35,8 @@
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
+            sampler2D _BloodTex;
+
             v2f vert (appdata v)
             {
                 v2f o;
@@ -46,22 +48,9 @@
 
             fixed4 frag (v2f i) : SV_Target
             {
-
-                // Mouse.y adjusts current Pixel Size
-                float2 pixelSize = 0.0;
-
-                // add pxResolution/2 to fix image position.
-                float2 fixedUV = i.uv + pixelSize / 2.0;
-
-                // Pixelated UV coordinates
-                float2 pxUV = floor(fixedUV / pixelSize) * pixelSize;
-
                 // Texture
                 fixed4 col = tex2D(_MainTex, i.uv);
-
-                // Pixelated Texture
-                fixed4 colPx = tex2D(_MainTex, pxUV);
-
+                col.rgb *= tex2D(_BloodTex, i.uv).rgb;
 
 
 
