@@ -6,6 +6,7 @@ public class TempMove : MonoBehaviour
 {
     private Rigidbody2D rb2;
     public float moveSpeed;
+    public static GameObject currentPlayerRoom;
 
     private void Awake()
     {

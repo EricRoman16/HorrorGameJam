@@ -16,7 +16,7 @@ public class RoomPathfinder : MonoBehaviour
         public int dist = 100000;
         public bool visited = false;
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         currentPathfinder = this;
@@ -32,6 +32,7 @@ public class RoomPathfinder : MonoBehaviour
             //node.transform.GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
+
     List<Transform> GetPath(Node startNode, Node endNode)
     {
         List<Node> nodePath = new List<Node>();

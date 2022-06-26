@@ -34,7 +34,7 @@ public class RoomScript : MonoBehaviour
     {
         foreach (SpriteRenderer spriteRenderer in objectsInRoom)
         {
-            if (spriteRenderer.gameObject.name.Contains("Door"))
+            if (spriteRenderer.gameObject.tag == "Door")
             {
                 return spriteRenderer.gameObject;
             }
@@ -42,13 +42,18 @@ public class RoomScript : MonoBehaviour
         return null;
     }
 
-    // Sets the enemy's current room whenever it enters a new room
+    // Sets the enemy's current room whenever it or the player enters a new room
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
             //Debug.Log("enter");
             Enemy.SetCurrentRoom(gameObject);
+            Enemy.SetTarget();
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            TempMove.currentPlayerRoom = gameObject;
             Enemy.SetTarget();
         }
     }

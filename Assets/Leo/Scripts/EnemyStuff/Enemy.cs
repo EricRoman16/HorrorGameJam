@@ -22,20 +22,30 @@ public static class Enemy
         currentRoom = room;
     }
 
+    /// <summary>
+    /// Sets the enemy's target to a door leading to the player according to GetPath RoomPathFinder. 
+    /// If the player is in the same room it will retarget to the player 
+    /// </summary>
     public static void SetTarget()
     {
         state = State.alerted;
-        Debug.Log("alerted");
-        GameObject startingDoor = currentRoom.GetComponent<RoomScript>().GetDoorInRoom();
+        //Debug.Log("alerted");
 
+        GameObject startingDoor = currentRoom.GetComponent<RoomScript>().GetDoorInRoom();
         List<Transform> pathToTarget = RoomPathfinder.currentPathfinder.GetPath(startingDoor.transform, currentFinalTarget.transform);
 
-        if (pathToTarget != null && pathToTarget.Count > 2 && state != State.chasing)
-        {
-            pathToTarget[0].GetComponent<SpriteRenderer>().color = Color.green;
-            pathToTarget[1].GetComponent<SpriteRenderer>().color = Color.cyan;
+        //Debug.Log(pathToTarget.Count);
 
-            if (pathToTarget[1].gameObject.GetComponent<DoorCollision>().room.gameObject == currentRoom)
+        if (pathToTarget != null && pathToTarget.Count > 0 && currentRoom != TempMove.currentPlayerRoom)
+        {
+            //pathToTarget[0].GetComponent<SpriteRenderer>().color = Color.green;
+
+            if (pathToTarget.Count == 1)
+            {
+                currentTarget = pathToTarget[0].gameObject;
+                return;
+            }
+            else if (pathToTarget[1].gameObject.GetComponent<DoorCollision>().room.gameObject == currentRoom)
             {
                 currentTarget = pathToTarget[1].gameObject;
                 return;
@@ -46,8 +56,8 @@ public static class Enemy
                 return;
             }
         }
-        Debug.Log("chasing");
         state = State.chasing;
+        //Debug.Log("chasing");
     }
 
     private static void CheckDirectSight()
