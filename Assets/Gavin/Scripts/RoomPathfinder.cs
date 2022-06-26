@@ -26,11 +26,11 @@ public class RoomPathfinder : MonoBehaviour
         //Debug.Log(path);
 
         //Testing
-        nodeList[nodeI].transform.GetComponent<SpriteRenderer>().color = Color.blue;
-        foreach (Node node in nodeList[nodeI].connectedNodes)
-        {
-            //node.transform.GetComponent<SpriteRenderer>().color = Color.red;
-        }
+        //nodeList[nodeI].transform.GetComponent<SpriteRenderer>().color = Color.blue;
+        //foreach (Node node in nodeList[nodeI].connectedNodes)
+        //{
+        //    node.transform.GetComponent<SpriteRenderer>().color = Color.red;
+        //}
     }
 
     List<Transform> GetPath(Node startNode, Node endNode)

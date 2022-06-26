@@ -23,16 +23,17 @@ public class EnemyAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        Enemy.currentFinalTarget = temp;
-        Enemy.currentTarget = temp;
+        //Enemy.currentFinalTarget = temp;
+        //Enemy.currentTarget = temp;
 
+        Enemy.SetRoamingTarget();
         InvokeRepeating("UpdatePath", 0f, 0.2f);
     }
 
 
     private void UpdatePath()
     {
-        if (seeker.IsDone() && Enemy.state == Enemy.State.alerted || Enemy.state == Enemy.State.chasing)
+        if (seeker.IsDone())
         {
             seeker.StartPath(rb.position, Enemy.currentTarget.transform.position, OnPathComplete);
         }

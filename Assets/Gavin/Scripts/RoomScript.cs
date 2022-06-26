@@ -6,8 +6,13 @@ public class RoomScript : MonoBehaviour
 {
     public BoxCollider2D boxCollider;
     public List<SpriteRenderer> objectsInRoom = new List<SpriteRenderer>();
+    public static List<GameObject> rooms = new List<GameObject>();
     public bool visible = false;
 
+    private void Awake()
+    {
+        rooms.Add(gameObject);
+    }
 
     private void Start()
     {
@@ -42,19 +47,20 @@ public class RoomScript : MonoBehaviour
         return null;
     }
 
-    // Sets the enemy's current room whenever it or the player enters a new room
+    // Sets the enemy or player's current room whenever they enter a new room and makes the enemy retarget
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
             //Debug.Log("enter");
             Enemy.SetCurrentRoom(gameObject);
-            Enemy.SetTarget();
+            Enemy.TargetRoaming();
+            //Enemy.SetTarget();
         }
         if (collision.gameObject.tag == "Player")
         {
             TempMove.currentPlayerRoom = gameObject;
-            Enemy.SetTarget();
+            //Enemy.SetTarget();
         }
     }
 }
