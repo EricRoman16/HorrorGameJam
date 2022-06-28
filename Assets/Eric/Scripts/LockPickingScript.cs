@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class NewBehaviourScript : MonoBehaviour
+public class LockPickingScript : MonoBehaviour
 {
+    public Slider slider;
+    public float speed = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +17,7 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        slider.value = Mathf.Abs(Mathf.Sin(Time.time * speed) * 100);
         
     }
 }
