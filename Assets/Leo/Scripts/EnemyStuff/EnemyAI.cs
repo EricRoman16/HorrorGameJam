@@ -23,17 +23,23 @@ public class EnemyAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        //Enemy.currentFinalTarget = temp;
-        //Enemy.currentTarget = temp;
+        Enemy.finalTarget = temp;
+        Enemy.currentTarget = temp;
+        Enemy.currentRoom = temp;
 
-        Enemy.SetRoamingTarget();
-        InvokeRepeating("UpdatePath", 0f, 0.2f);
+        InvokeRepeating("UpdatePath", 0f, 0.1f);
+        StartCoroutine(WaitToRoam());
     }
 
 
     private void UpdatePath()
     {
-        if (seeker.IsDone())
+        if (reachedEndOfPath && Enemy.state == Enemy.State.foundTarget)
+        {
+            Enemy.state = Enemy.State.headingToTarget;
+            StartCoroutine(WaitToRoam());
+        }
+        else if (seeker.IsDone())
         {
             seeker.StartPath(rb.position, Enemy.currentTarget.transform.position, OnPathComplete);
         }
@@ -50,9 +56,13 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if (Enemy.state == Enemy.State.chasing)
+        if (Enemy.mode == Enemy.Mode.chasing || Enemy.mode == Enemy.Mode.alerted)
         {
-            Enemy.currentTarget = player; 
+            Enemy.finalObjective = player;
+        }
+        if (Enemy.mode == Enemy.Mode.chasing)
+        {
+            Enemy.currentTarget = Enemy.finalObjective; 
         }
     }
 
@@ -84,5 +94,13 @@ public class EnemyAI : MonoBehaviour
         {
             currentWaypoint++;
         }
+    }
+
+    IEnumerator WaitToRoam()
+    {
+        chaseSpeed = 0;
+        yield return new WaitForSeconds(2);
+        Enemy.SetRoamingTarget();
+        chaseSpeed = 200;
     }
 }

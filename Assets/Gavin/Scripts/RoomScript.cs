@@ -7,11 +7,13 @@ public class RoomScript : MonoBehaviour
     public BoxCollider2D boxCollider;
     public List<SpriteRenderer> objectsInRoom = new List<SpriteRenderer>();
     public static List<GameObject> rooms = new List<GameObject>();
+    [HideInInspector] public GameObject roamingTarget;
     public bool visible = false;
 
     private void Awake()
     {
         rooms.Add(gameObject);
+        roamingTarget = GetComponentInChildren<RoamingTarget>().gameObject;
     }
 
     private void Start()
@@ -54,13 +56,13 @@ public class RoomScript : MonoBehaviour
         {
             //Debug.Log("enter");
             Enemy.SetCurrentRoom(gameObject);
+            //Enemy.ChaseTarget();
             Enemy.TargetRoaming();
-            //Enemy.SetTarget();
         }
         if (collision.gameObject.tag == "Player")
         {
             TempMove.currentPlayerRoom = gameObject;
-            //Enemy.SetTarget();
+            Enemy.ChaseTarget();
         }
     }
 }
