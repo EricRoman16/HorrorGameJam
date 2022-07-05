@@ -28,7 +28,7 @@ public class EnemyAI : MonoBehaviour
         Enemy.currentRoom = temp;
 
         InvokeRepeating("UpdatePath", 0f, 0.1f);
-        StartCoroutine(WaitToRoam());
+        StartCoroutine(WaitToStart());
     }
 
 
@@ -39,7 +39,7 @@ public class EnemyAI : MonoBehaviour
             Enemy.state = Enemy.State.headingToTarget;
             StartCoroutine(WaitToRoam());
         }
-        else if (seeker.IsDone())
+        else if (seeker.IsDone() && Enemy.state != Enemy.State.idle)
         {
             seeker.StartPath(rb.position, Enemy.currentTarget.transform.position, OnPathComplete);
         }
@@ -56,13 +56,17 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        if (Enemy.mode == Enemy.Mode.chasing || Enemy.mode == Enemy.Mode.alerted)
+        if (Enemy.currentRoom == TempMove.currentPlayerRoom)
         {
-            Enemy.finalObjective = player;
+            Enemy.ChaseTarget();
+        }
+        else if (Enemy.mode == Enemy.Mode.chasing && Enemy.currentRoom != TempMove.currentPlayerRoom)
+        {
+            Enemy.SetRoamingTarget();
         }
         if (Enemy.mode == Enemy.Mode.chasing)
         {
-            Enemy.currentTarget = Enemy.finalObjective; 
+            Enemy.currentTarget = player;
         }
     }
 
@@ -98,6 +102,21 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator WaitToRoam()
     {
+        while (RoamingTarget.reachedRoamingTarget == false)
+        {
+            Debug.Log("waiting");
+            yield return null;
+        }
+        Debug.Log("done waiting");
+        chaseSpeed = 0;
+        yield return new WaitForSeconds(2);
+        Enemy.SetRoamingTarget();
+        chaseSpeed = 200;
+    }
+
+    IEnumerator WaitToStart()
+    {
+        Debug.Log("waiting to start");
         chaseSpeed = 0;
         yield return new WaitForSeconds(2);
         Enemy.SetRoamingTarget();

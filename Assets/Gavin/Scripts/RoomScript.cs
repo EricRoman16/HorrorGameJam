@@ -56,13 +56,23 @@ public class RoomScript : MonoBehaviour
         {
             //Debug.Log("enter");
             Enemy.SetCurrentRoom(gameObject);
-            //Enemy.ChaseTarget();
-            Enemy.TargetRoaming();
+            if (Enemy.currentRoom == TempMove.currentPlayerRoom)
+            {
+                Enemy.ChaseTarget();
+            }
+            else if (Enemy.mode == Enemy.Mode.chasing)
+            {
+                Enemy.SetRoamingTarget();
+            }
+            else if (Enemy.state != Enemy.State.idle)
+            {
+                Enemy.TargetRoaming();
+            }
         }
         if (collision.gameObject.tag == "Player")
         {
             TempMove.currentPlayerRoom = gameObject;
-            Enemy.ChaseTarget();
+            //Enemy.ChaseTarget();
         }
     }
 }

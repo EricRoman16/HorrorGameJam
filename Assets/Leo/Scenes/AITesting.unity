@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 32798164}
   - component: {fileID: 32798165}
   - component: {fileID: 32798166}
+  - component: {fileID: 32798167}
   m_Layer: 0
   m_Name: RoamingTarget (5)
   m_TagString: Target
@@ -216,6 +217,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roamingTargetRoom: {fileID: 0}
+--- !u!58 &32798167
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32798163}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.000000014901161, y: -0.0000009536743}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1001 &89334600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -367,6 +384,7 @@ GameObject:
   - component: {fileID: 193018721}
   - component: {fileID: 193018722}
   - component: {fileID: 193018723}
+  - component: {fileID: 193018724}
   m_Layer: 0
   m_Name: RoamingTarget (4)
   m_TagString: Target
@@ -451,6 +469,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roamingTargetRoom: {fileID: 0}
+--- !u!58 &193018724
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193018720}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0000019073486, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &248027561
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,6 +929,7 @@ GameObject:
   - component: {fileID: 364650851}
   - component: {fileID: 364650852}
   - component: {fileID: 364650853}
+  - component: {fileID: 364650854}
   m_Layer: 0
   m_Name: RoamingTarget (6)
   m_TagString: Target
@@ -979,6 +1014,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roamingTargetRoom: {fileID: 0}
+--- !u!58 &364650854
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364650850}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &367333591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,6 +1264,7 @@ GameObject:
   - component: {fileID: 399489267}
   - component: {fileID: 399489268}
   - component: {fileID: 399489269}
+  - component: {fileID: 399489270}
   m_Layer: 0
   m_Name: RoamingTarget (2)
   m_TagString: Target
@@ -1297,6 +1349,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roamingTargetRoom: {fileID: 0}
+--- !u!58 &399489270
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399489266}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1001 &426034975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1583,6 +1651,7 @@ GameObject:
   - component: {fileID: 825383843}
   - component: {fileID: 825383844}
   - component: {fileID: 825383845}
+  - component: {fileID: 825383846}
   m_Layer: 0
   m_Name: RoamingTarget
   m_TagString: Target
@@ -1667,6 +1736,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roamingTargetRoom: {fileID: 0}
+--- !u!58 &825383846
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825383842}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1001 &899712170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3004,6 +3089,7 @@ GameObject:
   - component: {fileID: 1816399334}
   - component: {fileID: 1816399335}
   - component: {fileID: 1816399336}
+  - component: {fileID: 1816399337}
   m_Layer: 0
   m_Name: RoamingTarget (7)
   m_TagString: Target
@@ -3088,6 +3174,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roamingTargetRoom: {fileID: 0}
+--- !u!58 &1816399337
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816399333}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1890853404
 GameObject:
   m_ObjectHideFlags: 0
@@ -3099,6 +3201,7 @@ GameObject:
   - component: {fileID: 1890853405}
   - component: {fileID: 1890853406}
   - component: {fileID: 1890853407}
+  - component: {fileID: 1890853408}
   m_Layer: 0
   m_Name: RoamingTarget (1)
   m_TagString: Target
@@ -3183,6 +3286,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roamingTargetRoom: {fileID: 0}
+--- !u!58 &1890853408
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890853404}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0000009536743, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.50000006
 --- !u!1 &1921609326
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,6 +3775,7 @@ GameObject:
   - component: {fileID: 2133420624}
   - component: {fileID: 2133420625}
   - component: {fileID: 2133420626}
+  - component: {fileID: 2133420627}
   m_Layer: 0
   m_Name: RoamingTarget (3)
   m_TagString: Target
@@ -3740,3 +3860,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roamingTargetRoom: {fileID: 0}
+--- !u!58 &2133420627
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133420623}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.0000009536743}
+  serializedVersion: 2
+  m_Radius: 0.50000006

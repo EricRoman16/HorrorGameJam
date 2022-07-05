@@ -9,7 +9,7 @@ public static class Enemy
     public static GameObject finalTarget;
     public static GameObject finalObjective;
     public static Mode mode = Mode.roaming;
-    public static State state = State.headingToTarget;
+    public static State state = State.idle;
     public static bool hasDirectSight;
 
     public enum Mode
@@ -21,6 +21,7 @@ public static class Enemy
 
     public enum State
     {
+        idle,
         headingToTarget,
         foundTarget
     }
@@ -36,35 +37,7 @@ public static class Enemy
     /// </summary>
     public static void ChaseTarget()
     {
-        //Debug.Log("alerted");
-        //mode = Mode.alerted;
-
-        //GameObject startingDoor = currentRoom.GetComponent<RoomScript>().GetDoorInRoom();
-        //List<Transform> pathToTarget = RoomPathfinder.currentPathfinder.GetPath(startingDoor.transform, finalTarget.transform);
-
-        //Debug.Log(pathToTarget.Count);
-
-        //if (pathToTarget != null && pathToTarget.Count > 0 && currentRoom != ReturnTargetRoom(finalObjective))
-        //{
-        //    //pathToTarget[0].GetComponent<SpriteRenderer>().color = Color.green;
-
-        //    if (pathToTarget.Count == 1)
-        //    {
-        //        currentTarget = pathToTarget[0].gameObject;
-        //        return;
-        //    }
-        //    else if (pathToTarget[1].gameObject.GetComponent<DoorCollision>().room.gameObject == currentRoom)
-        //    {
-        //        currentTarget = pathToTarget[1].gameObject;
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        currentTarget = pathToTarget[0].gameObject;
-        //        return;
-        //    }
-        //}
-        //mode = Mode.chasing;
+        mode = Mode.chasing;
         //Debug.Log("chasing");
     }
 
@@ -75,7 +48,7 @@ public static class Enemy
         GameObject startingDoor = currentRoom.GetComponent<RoomScript>().GetDoorInRoom();
         List<Transform> pathToTarget = RoomPathfinder.currentPathfinder.GetPath(startingDoor.transform, finalTarget.transform);
 
-        Debug.Log(pathToTarget.Count);
+        //Debug.Log(pathToTarget.Count);
 
         if (pathToTarget != null && pathToTarget.Count > 1 && currentRoom != ReturnTargetRoom(finalObjective))
         {
@@ -111,6 +84,8 @@ public static class Enemy
         GameObject targetRoom = RoomScript.rooms[Random.Range(0, RoomScript.rooms.Count)];
         finalTarget = targetRoom.GetComponent<RoomScript>().GetDoorInRoom();
         finalObjective = targetRoom.GetComponent<RoomScript>().roamingTarget;
+        state = State.headingToTarget;
+        mode = Mode.roaming;
 
         finalTarget.GetComponent<SpriteRenderer>().color = Color.red;
         finalObjective.GetComponent<SpriteRenderer>().color = Color.red;
