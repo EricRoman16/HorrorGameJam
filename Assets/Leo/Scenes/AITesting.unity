@@ -913,7 +913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c94ba11a4ada1944843195c8be28363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 200
+  chaseSpeed: 100
   roamSpeed: 50
   nextWaypointDist: 3
   temp: {fileID: 1921609326}

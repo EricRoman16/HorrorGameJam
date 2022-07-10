@@ -4,14 +4,25 @@ using UnityEngine;
 
 public static class Enemy
 {
+    public static float speed;
+    public static float chaseSpeed = 100;
+    public static float roamSpeed = 50;
+
     public static GameObject currentRoom;
     public static GameObject currentTarget;
     public static GameObject finalTarget;
     public static GameObject finalObjective;
+
     public static Mode mode = Mode.roaming;
     public static State state = State.idle;
-    public static bool hasDirectSight;
+    public static DirectSight sight = DirectSight.noSight;
 
+    public enum DirectSight
+    {
+        noSight,
+        hasSight,
+        hadSight
+    }
     public enum Mode
     {
         roaming,
@@ -32,8 +43,7 @@ public static class Enemy
     }
 
     /// <summary>
-    /// Sets the enemy's target to a door leading to the player according to GetPath in RoomPathFinder. 
-    /// If the player is in the same room it will retarget to the player 
+    /// Sets the enemy's target to the player
     /// </summary>
     public static void ChaseTarget()
     {
@@ -79,7 +89,7 @@ public static class Enemy
     /// </summary>
     public static void SetRoamingTarget()
     {
-        Debug.Log("Setting roaming target");
+        //Debug.Log("Setting roaming target");
 
         GameObject targetRoom = RoomScript.rooms[Random.Range(0, RoomScript.rooms.Count)];
         finalTarget = targetRoom.GetComponent<RoomScript>().GetDoorInRoom();
@@ -112,6 +122,52 @@ public static class Enemy
         {
             Debug.Log("Target Unknown");
             return null;
+        }
+    }
+
+    public static void CheckLineOfSight()
+    {
+        if (currentRoom == TempMove.currentPlayerRoom)
+        {
+            //Debug.Log("true");
+            sight = DirectSight.hasSight;
+        }
+        else if (sight == DirectSight.hasSight)
+        {
+            sight = DirectSight.hadSight;
+        }
+        else
+        {
+            //Debug.Log("false");
+            sight = DirectSight.noSight;
+        }
+    }
+
+    public static void CheckPlayerLineOfSight()
+    {
+        if (currentRoom == TempMove.currentPlayerRoom)
+        {
+            sight = DirectSight.hasSight;
+        }
+        else if (sight == DirectSight.hasSight)
+        {
+            sight = DirectSight.hadSight;
+        }
+        //else
+        //{
+        //    sight = DirectSight.noSight;
+        //}
+    }
+
+    public static void SetSpeed()
+    {
+        if (mode == Mode.roaming)
+        {
+            speed = roamSpeed;
+        }
+        else
+        {
+            speed = chaseSpeed;
         }
     }
 }

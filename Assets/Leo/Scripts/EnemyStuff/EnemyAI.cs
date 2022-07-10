@@ -5,8 +5,6 @@ using Pathfinding;
 
 public class EnemyAI : MonoBehaviour
 {
-    public float chaseSpeed = 200f;
-    public float roamSpeed = 50f;
     public float nextWaypointDist = 3f;
 
     private Path path;
@@ -62,9 +60,20 @@ public class EnemyAI : MonoBehaviour
         }
         else if (Enemy.mode == Enemy.Mode.chasing && Enemy.currentRoom != TempMove.currentPlayerRoom)
         {
-            Enemy.SetRoamingTarget();
+            if (Enemy.sight == Enemy.DirectSight.hadSight)
+            {
+                Debug.Log("has direct sight");
+                Enemy.currentTarget = DoorScript.lastSeenDoor;
+            }
+            else
+            {
+                //Debug.Log("back to roaming");
+                Enemy.currentTarget = Enemy.currentRoom.GetComponent<RoomScript>().roamingTarget;
+                StartCoroutine(WaitToRoam());
+            }
         }
-        if (Enemy.mode == Enemy.Mode.chasing)
+
+        if (Enemy.mode == Enemy.Mode.chasing && Enemy.currentRoom == TempMove.currentPlayerRoom)
         {
             Enemy.currentTarget = player;
         }
@@ -88,7 +97,7 @@ public class EnemyAI : MonoBehaviour
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * chaseSpeed * Time.deltaTime;
+        Vector2 force = direction * Enemy.speed * Time.deltaTime;
 
         rb.velocity = force;
 
@@ -100,26 +109,42 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Pauses for a moment after reaching a roaming point before roaming again
+    /// </summary>
+    /// <returns></returns>
     IEnumerator WaitToRoam()
     {
         while (RoamingTarget.reachedRoamingTarget == false)
         {
-            Debug.Log("waiting");
+            //Debug.Log("waiting");
             yield return null;
         }
-        Debug.Log("done waiting");
-        chaseSpeed = 0;
-        yield return new WaitForSeconds(2);
+        //Debug.Log("done waiting");
+        Enemy.speed = 0;
+        for (float timer = 2; timer >= 0; timer -= Time.deltaTime)
+        {
+            if (Enemy.mode == Enemy.Mode.chasing)
+            {
+                Enemy.speed = Enemy.roamSpeed;
+                yield break;
+            }
+            yield return null;
+        }
         Enemy.SetRoamingTarget();
-        chaseSpeed = 200;
+        Enemy.speed = Enemy.roamSpeed;
     }
 
+    /// <summary>
+    /// Pauses at the start before starting to roam
+    /// </summary>
+    /// <returns></returns>
     IEnumerator WaitToStart()
     {
-        Debug.Log("waiting to start");
-        chaseSpeed = 0;
+        //Debug.Log("waiting to start");
+        Enemy.speed = 0;
         yield return new WaitForSeconds(2);
         Enemy.SetRoamingTarget();
-        chaseSpeed = 200;
+        Enemy.speed = Enemy.roamSpeed;
     }
 }

@@ -6,6 +6,8 @@ using System.Linq;
 
 public class DoorScript : MonoBehaviour
 {
+    public static GameObject lastSeenDoor;
+
     /// <summary>
     /// 
     /// </summary>
@@ -17,6 +19,11 @@ public class DoorScript : MonoBehaviour
         {
             StartCoroutine(DelayMove(go, index));
             Camera.main.GetComponent<TransitionScript>().StartTransition();
+            if (Enemy.sight == Enemy.DirectSight.hasSight)
+            {
+                //Debug.Log("storing door");
+                lastSeenDoor = transform.GetChild(index).gameObject;
+            }
             //Enemy.finalTarget = transform.GetChild(index).gameObject;
         }
         else if (go.name == "Enemy")

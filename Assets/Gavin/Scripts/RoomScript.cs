@@ -56,11 +56,12 @@ public class RoomScript : MonoBehaviour
         {
             //Debug.Log("enter");
             Enemy.SetCurrentRoom(gameObject);
+            Enemy.CheckLineOfSight();
             if (Enemy.currentRoom == TempMove.currentPlayerRoom)
             {
                 Enemy.ChaseTarget();
             }
-            else if (Enemy.mode == Enemy.Mode.chasing)
+            else if (Enemy.mode == Enemy.Mode.chasing && Enemy.sight == Enemy.DirectSight.noSight)
             {
                 Enemy.SetRoamingTarget();
             }
@@ -68,10 +69,13 @@ public class RoomScript : MonoBehaviour
             {
                 Enemy.TargetRoaming();
             }
+            Enemy.SetSpeed();
         }
         if (collision.gameObject.tag == "Player")
         {
             TempMove.currentPlayerRoom = gameObject;
+            Enemy.CheckPlayerLineOfSight();
+            Enemy.SetSpeed();
             //Enemy.ChaseTarget();
         }
     }
