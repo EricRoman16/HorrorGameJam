@@ -26,10 +26,10 @@ public class DoorScript : MonoBehaviour
             }
             //Enemy.finalTarget = transform.GetChild(index).gameObject;
         }
-        else if (go.name == "Enemy")
+        if (go.name == "Enemy")
         {
             go.transform.position = transform.GetChild(1 - index).GetChild(0).position;
-            transform.GetChild(1 - index).GetComponent<DoorCollision>().enemyUsable = false;
+            //transform.GetChild(1 - index).GetComponent<DoorCollision>().enemyUsable = false;
         }
     }
 
@@ -38,7 +38,7 @@ public class DoorScript : MonoBehaviour
         yield return null; 
         yield return null; 
         go.transform.position = transform.GetChild(1 - index).GetChild(0).position;
-        transform.GetChild(1 - index).GetComponent<DoorCollision>().playerUsable = false;
+        //transform.GetChild(1 - index).GetComponent<DoorCollision>().playerUsable = false;
         RoomPathfinder.currentPathfinder.UpdatePath(GameObject.Find("Door").transform.GetChild(0), transform.GetChild(1 - index));
         transform.GetChild(1 - index).GetComponent<DoorCollision>().room.visible = true;
         transform.GetChild(index).GetComponent<DoorCollision>().room.visible = false;
