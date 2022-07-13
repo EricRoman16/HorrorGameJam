@@ -6,9 +6,9 @@
     }
     SubShader
     {
-        // No culling or depth
-        Cull Off ZWrite Off ZTest Always
-
+         Tags { "RenderType" = "Transparent" }
+         LOD 100
+        Blend SrcAlpha OneMinusSrcAlpha
         Pass
         {
             CGPROGRAM
@@ -46,7 +46,6 @@
             {
                 fixed4 col = lerp(tex2D(_OldView, i.uv), tex2D(_MainTex, i.uv), _Progress);
                 // just invert the colors
-
                 return col;
             }
             ENDCG

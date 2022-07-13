@@ -153,6 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brushes:
   - {fileID: 768531439}
+  brushSize: 3
+  brushStrength: 0
 --- !u!212 &607925255
 SpriteRenderer:
   m_ObjectHideFlags: 0

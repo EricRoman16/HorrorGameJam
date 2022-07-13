@@ -3,12 +3,13 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _BloodColor ("Blood Color", Color) = (0.7,1,0.7,1)
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Transparent" }
         LOD 100
-
+        Blend SrcAlpha OneMinusSrcAlpha
         Pass
         {
             CGPROGRAM
@@ -34,6 +35,7 @@
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            float4 _BloodColor;
 
             sampler2D _BloodTex;
 
@@ -50,10 +52,8 @@
             {
                 // Texture
                 fixed4 col = tex2D(_MainTex, i.uv);
-                col.rgb *= tex2D(_BloodTex, i.uv).rgb;
-
-
-
+                col.rgb = 0;//lerp(_BloodColor, col.rgb, tex2D(_BloodTex, i.uv).a);
+                col.r = tex2D(_BloodTex, i.uv).a - (sin(_Time.z*3)+1)/10;
 
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
