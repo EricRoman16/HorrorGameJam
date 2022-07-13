@@ -6,6 +6,7 @@ public class SimplePlayerMovement : MonoBehaviour
 {
     public float speed = 5f;
     public bool nearCloset = false;
+    public bool inCloset = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,25 +20,29 @@ public class SimplePlayerMovement : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().color = new Vector4(36, 238, 17, 1);//might need to change these values
         }
-        else
+        else if(!inCloset)
         {
             gameObject.GetComponent<SpriteRenderer>().color = new Vector4(17, 95, 238, .4f);//might need to change these values
         }
 
-        if(nearCloset && Input.GetKeyDown(KeyCode.E))
+        if((nearCloset || inCloset) && Input.GetKeyDown(KeyCode.E))
         {
-            EnterCloset();
+            Closet();
         }
         
         
         
         transform.position += new Vector3(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, Input.GetAxisRaw("Vertical") * speed * Time.deltaTime, 0);
     }
-
-    public void EnterCloset()
+    
+    public void Closet()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = new Vector4(17, 95, 238, 0);//might need to change these values
-
+        if(!inCloset)
+            gameObject.GetComponent<SpriteRenderer>().color = new Vector4(17, 95, 238, 0);//might need to change these values
+        if (!inCloset)
+            gameObject.GetComponent<SpriteRenderer>().color = new Vector4(17, 95, 238, 1);//might need to change these values
+        inCloset = !inCloset;
+        //this.transform.position += new Vector3(0, 5, 0);
         //Whatever else needs to happen
     }
 }
