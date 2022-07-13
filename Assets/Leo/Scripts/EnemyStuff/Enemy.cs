@@ -5,7 +5,7 @@ using UnityEngine;
 public static class Enemy
 {
     public static float speed;
-    public static float chaseSpeed = 100;
+    public static float chaseSpeed = 150;
     public static float roamSpeed = 50;
 
     public static GameObject currentRoom;
@@ -62,7 +62,7 @@ public static class Enemy
 
         if (pathToTarget != null && pathToTarget.Count > 1 && currentRoom != ReturnTargetRoom(finalObjective))
         {
-            pathToTarget[0].GetComponent<SpriteRenderer>().color = Color.green;
+            //pathToTarget[0].GetComponent<SpriteRenderer>().color = Color.green;
 
             if (pathToTarget.Count == 1)
             {
@@ -97,8 +97,8 @@ public static class Enemy
         state = State.headingToTarget;
         mode = Mode.roaming;
 
-        finalTarget.GetComponent<SpriteRenderer>().color = Color.red;
-        finalObjective.GetComponent<SpriteRenderer>().color = Color.red;
+        //finalTarget.GetComponent<SpriteRenderer>().color = Color.red;
+        //finalObjective.GetComponent<SpriteRenderer>().color = Color.red;
 
         TargetRoaming();
     }

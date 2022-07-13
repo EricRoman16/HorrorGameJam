@@ -62,7 +62,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (Enemy.sight == Enemy.DirectSight.hadSight)
             {
-                Debug.Log("has direct sight");
+                //Debug.Log("has direct sight");
                 Enemy.currentTarget = DoorScript.lastSeenDoor;
             }
             else
@@ -77,6 +77,17 @@ public class EnemyAI : MonoBehaviour
         {
             Enemy.currentTarget = player;
         }
+
+        //Debug
+        if (Enemy.mode == Enemy.Mode.chasing)
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.green;
+        }
+        //Debug
     }
 
     private void FixedUpdate()
