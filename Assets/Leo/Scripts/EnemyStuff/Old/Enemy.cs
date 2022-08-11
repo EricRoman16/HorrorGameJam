@@ -13,8 +13,9 @@ public static class Enemy
     public static GameObject finalTarget;
     public static GameObject finalObjective;
 
+    public static bool playerHidden = false;
     public static Mode mode = Mode.roaming;
-    public static State state = State.idle;
+    public static RoamingState state = RoamingState.idle;
     public static DirectSight sight = DirectSight.noSight;
 
     public enum DirectSight
@@ -23,14 +24,16 @@ public static class Enemy
         hasSight,
         hadSight
     }
+
     public enum Mode
     {
         roaming,
-        alerted,
+        searching,
+        checking,
         chasing
     }
 
-    public enum State
+    public enum RoamingState
     {
         idle,
         headingToTarget,
@@ -43,17 +46,27 @@ public static class Enemy
     }
 
     /// <summary>
-    /// Sets the enemy's target to the player
+    /// Sets the enemy's mode to chasing
     /// </summary>
-    public static void ChaseTarget()
+    public static void ChaseMode()
     {
         mode = Mode.chasing;
         //Debug.Log("chasing");
     }
 
-    public static void TargetRoaming()
+    /// <summary>
+    /// Sets the enemy's mode to searching
+    /// </summary>
+    public static void SearchMode()
     {
-        state = State.headingToTarget;
+        mode = Mode.searching;
+        //Debug.Log("searching");
+    }
+
+
+    public static void ChaseTarget()
+    {
+        state = RoamingState.headingToTarget;
 
         GameObject startingDoor = currentRoom.GetComponent<RoomScript>().GetDoorInRoom();
         List<Transform> pathToTarget = RoomPathfinder.currentPathfinder.GetPath(startingDoor.transform, finalTarget.transform);
@@ -81,7 +94,7 @@ public static class Enemy
             }
         }
         currentTarget = finalObjective;
-        state = State.foundTarget;
+        state = RoamingState.foundTarget;
     }
 
     /// <summary>
@@ -90,17 +103,34 @@ public static class Enemy
     public static void SetRoamingTarget()
     {
         //Debug.Log("Setting roaming target");
-
         GameObject targetRoom = RoomScript.rooms[Random.Range(0, RoomScript.rooms.Count)];
         finalTarget = targetRoom.GetComponent<RoomScript>().GetDoorInRoom();
         finalObjective = targetRoom.GetComponent<RoomScript>().roamingTarget;
-        state = State.headingToTarget;
+        state = RoamingState.headingToTarget;
         mode = Mode.roaming;
 
-        //finalTarget.GetComponent<SpriteRenderer>().color = Color.red;
-        //finalObjective.GetComponent<SpriteRenderer>().color = Color.red;
+        ChaseTarget();
+    }
 
-        TargetRoaming();
+    /// <summary>
+    /// Sets the target to the roaming target in the room 
+    /// </summary>
+    public static void TargetCurrentRoaming()
+    {
+        //Debug.Log("Setting hiding target");
+        currentTarget = currentRoom.GetComponent<RoomScript>().roamingTarget;
+        state = RoamingState.foundTarget;
+    }
+
+    /// <summary>
+    /// Chooses a raondom hiding spot on the room and goes to it
+    /// </summary>
+    public static void ChooseRandomHidden()
+    {
+        //Debug.Log("Setting hiding target");
+        currentTarget = currentRoom.GetComponent<RoomScript>().hidingTarget;
+        mode = Mode.checking;
+        state = RoamingState.foundTarget;
     }
 
     /// <summary>
@@ -112,7 +142,7 @@ public static class Enemy
     {
         if (target.tag == "Player")
         {
-            return TempMove.currentPlayerRoom;
+            return Player.currentPlayerRoom;
         }
         else if (target.tag == "Target")
         {
@@ -127,7 +157,7 @@ public static class Enemy
 
     public static void CheckLineOfSight()
     {
-        if (currentRoom == TempMove.currentPlayerRoom)
+        if (currentRoom == Player.currentPlayerRoom)
         {
             //Debug.Log("true");
             sight = DirectSight.hasSight;
@@ -145,7 +175,7 @@ public static class Enemy
 
     public static void CheckPlayerLineOfSight()
     {
-        if (currentRoom == TempMove.currentPlayerRoom)
+        if (currentRoom == Player.currentPlayerRoom)
         {
             sight = DirectSight.hasSight;
         }

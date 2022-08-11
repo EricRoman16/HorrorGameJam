@@ -7,13 +7,14 @@ public class RoomScript : MonoBehaviour
     public BoxCollider2D boxCollider;
     public List<SpriteRenderer> objectsInRoom = new List<SpriteRenderer>();
     public static List<GameObject> rooms = new List<GameObject>();
-    [HideInInspector] public GameObject roamingTarget;
+    [HideInInspector] public GameObject roamingTarget, hidingTarget;
     public bool visible = false;
 
     private void Awake()
     {
         rooms.Add(gameObject);
         roamingTarget = GetComponentInChildren<RoamingTarget>().gameObject;
+        hidingTarget = GetComponentInChildren<HidingTarget>().gameObject;
     }
 
     private void Start()
@@ -57,23 +58,23 @@ public class RoomScript : MonoBehaviour
             //Debug.Log("enter");
             Enemy.SetCurrentRoom(gameObject);
             Enemy.CheckLineOfSight();
-            if (Enemy.currentRoom == TempMove.currentPlayerRoom)
+            if (Enemy.currentRoom == Player.currentPlayerRoom)
             {
-                Enemy.ChaseTarget();
+                Enemy.ChaseMode();
             }
             else if (Enemy.mode == Enemy.Mode.chasing && Enemy.sight == Enemy.DirectSight.noSight)
             {
                 Enemy.SetRoamingTarget();
             }
-            else if (Enemy.state != Enemy.State.idle)
+            else if (Enemy.state != Enemy.RoamingState.idle)
             {
-                Enemy.TargetRoaming();
+                Enemy.ChaseTarget();
             }
             Enemy.SetSpeed();
         }
         if (collision.gameObject.tag == "Player")
         {
-            TempMove.currentPlayerRoom = gameObject;
+            Player.currentPlayerRoom = gameObject;
             Enemy.CheckPlayerLineOfSight();
             Enemy.SetSpeed();
             //Enemy.ChaseTarget();

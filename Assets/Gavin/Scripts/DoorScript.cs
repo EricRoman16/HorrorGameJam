@@ -15,20 +15,24 @@ public class DoorScript : MonoBehaviour
     /// <param name="index">The index of the door that was collided with</param>
     public void DoorHit(GameObject go, int index)
     {
-        if(go.name == "Player")
+        if (go.name == "Player")
         {
             StartCoroutine(DelayMove(go, index));
             Camera.main.GetComponent<TransitionScript>().StartTransition();
-            if (Enemy.sight == Enemy.DirectSight.hasSight)
+
+            if (lastSeenDoor == null && MonsterAI.chasingPlayer)
             {
-                //Debug.Log("storing door");
                 lastSeenDoor = transform.GetChild(index).gameObject;
             }
-            //Enemy.finalTarget = transform.GetChild(index).gameObject;
         }
         if (go.name == "Enemy")
         {
             go.transform.position = transform.GetChild(1 - index).GetChild(0).position;
+
+            if (lastSeenDoor != null)
+            {
+                lastSeenDoor = null;
+            }
             //transform.GetChild(1 - index).GetComponent<DoorCollision>().enemyUsable = false;
         }
     }
