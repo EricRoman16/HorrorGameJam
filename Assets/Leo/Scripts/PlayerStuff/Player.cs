@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rb2;
     public float moveSpeed;
-    public static bool playerHidden;
-    public static GameObject currentPlayerRoom;
+    public static bool playerHidden, playerHiding;
+    public static GameObject currentPlayerRoom, currentHidingSpot;
 
     private void Awake()
     {
@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = Color.yellow;
 
+            playerHiding = true;
             if (MonsterAI.playerSpotted)
             {
                 playerHidden = false;
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = Color.blue;
 
+            playerHiding = false;
             playerHidden = false;
         }
     }

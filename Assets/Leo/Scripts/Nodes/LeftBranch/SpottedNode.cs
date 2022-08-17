@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetLastSeenDoorNode : Node
+public class SpottedNode : Node
 {
-    public TargetLastSeenDoorNode() { }
+    public SpottedNode() { }
 
     public override NodeState Evaluate()
     {
-        if (DoorScript.lastSeenDoor != null)
+        if (MonsterAI.playerSpotted == false)
         {
-            MonsterAI.currentTarget = DoorScript.lastSeenDoor;
-            return NodeState.RUNNING;
+            return NodeState.FAILURE;
         }
         else
         {
+            MonsterAI.chasingPlayer = true;
             return NodeState.SUCCESS;
         }
     }

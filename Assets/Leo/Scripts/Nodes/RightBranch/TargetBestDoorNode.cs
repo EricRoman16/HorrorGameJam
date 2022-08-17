@@ -1,26 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Enemy;
 
-public class TargetRoamingPointNode : Node
+public class TargetBestDoorNode : Node
 {
-    public TargetRoamingPointNode() { }
+    public TargetBestDoorNode() { }
 
     public override NodeState Evaluate()
     {
-        Roam();
-        return _nodeState;
+        TargetBestDoor();
+        return nodeState;
     }
 
-    private void Roam()
+    private void TargetBestDoor()
     {
-        GameObject startingDoor = currentRoom.GetComponent<RoomScript>().GetDoorInRoom();
+        GameObject startingDoor = MonsterAI.currentEnemyRoom.GetComponent<RoomScript>().GetDoorInRoom();
         List<Transform> pathToTarget = RoomPathfinder.currentPathfinder.GetPath(startingDoor.transform, MonsterAI.currentTargetDoor.transform);
 
         //Debug.Log(pathToTarget.Count);
 
-        if (pathToTarget != null && pathToTarget.Count > 1 && currentRoom != MonsterAI.currentTargetRoom)
+        if (pathToTarget != null && pathToTarget.Count > 1 && MonsterAI.currentEnemyRoom != MonsterAI.currentTargetRoom)
         {
             //pathToTarget[0].GetComponent<SpriteRenderer>().color = Color.green;
 
@@ -37,16 +36,9 @@ public class TargetRoamingPointNode : Node
                 MonsterAI.currentTarget = pathToTarget[0].gameObject;
             }
             _nodeState = NodeState.RUNNING;
-            return;
         }
-
-        MonsterAI.currentTarget = MonsterAI.currentTargetRoaming;
-
-        if (RoamingTarget.reachedRoamingTarget)
+        else
         {
-            MonsterAI.currentTargetRoom = null;
-            MonsterAI.currentTargetDoor = null;
-            MonsterAI.currentTargetRoaming = null;
             _nodeState = NodeState.SUCCESS;
         }
     }

@@ -7,14 +7,18 @@ public class RoomScript : MonoBehaviour
     public BoxCollider2D boxCollider;
     public List<SpriteRenderer> objectsInRoom = new List<SpriteRenderer>();
     public static List<GameObject> rooms = new List<GameObject>();
-    [HideInInspector] public GameObject roamingTarget, hidingTarget;
+    [HideInInspector] public List<GameObject> hidingTargets = new List<GameObject>();
+    [HideInInspector] public GameObject roamingTarget;
     public bool visible = false;
 
     private void Awake()
     {
         rooms.Add(gameObject);
         roamingTarget = GetComponentInChildren<RoamingTarget>().gameObject;
-        hidingTarget = GetComponentInChildren<HidingTarget>().gameObject;
+        foreach (HidingTarget hidingTarget in transform)
+        {
+            hidingTargets.Add(hidingTarget.GetComponent<GameObject>());
+        }
     }
 
     private void Start()

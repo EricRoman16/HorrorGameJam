@@ -128,7 +128,7 @@ public static class Enemy
     public static void ChooseRandomHidden()
     {
         //Debug.Log("Setting hiding target");
-        currentTarget = currentRoom.GetComponent<RoomScript>().hidingTarget;
+        //currentTarget = currentRoom.GetComponent<RoomScript>().hidingTarget;
         mode = Mode.checking;
         state = RoamingState.foundTarget;
     }

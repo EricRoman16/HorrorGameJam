@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FindRoamingPointNode : Node
+public class TargetRoomNode : Node
 {
-    public FindRoamingPointNode() { }
+    public TargetRoomNode() { }
 
     public override NodeState Evaluate()
     {
-        FindRoamingPoint();
+        MonsterAI.chasingPlayer = false;
+        FindRandomRoom();
         return NodeState.SUCCESS;
     }
 
-    private void FindRoamingPoint()
+    private void FindRandomRoom()
     {
         if (MonsterAI.currentTargetRoom == null)
         {
