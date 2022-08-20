@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class TargetPlayer : Node
 {
+    private float chaseSpeed;
     private GameObject player;
     private Transform currentPos;
 
-    public TargetPlayer(GameObject player, Transform currentPos) 
+    public TargetPlayer(float chaseSpeed, GameObject player, Transform currentPos) 
     {
+        this.chaseSpeed = chaseSpeed;
         this.player = player;
         this.currentPos = currentPos;
     }
 
     public override NodeState Evaluate()
     {
+        MonsterAI.currentSpeed = chaseSpeed;
         MonsterAI.currentTarget = player;
 
-        float dist = Vector3.Distance(currentPos.position, Player.currentHidingSpot.transform.position);
+        float dist = Vector3.Distance(currentPos.position, player.transform.position);
 
-        if (dist > 3)
+        if (dist > 1)
         {
             return NodeState.RUNNING;
         }

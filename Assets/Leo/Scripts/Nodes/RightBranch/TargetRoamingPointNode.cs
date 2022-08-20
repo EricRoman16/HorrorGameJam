@@ -13,20 +13,20 @@ public class TargetRoamingPointNode : Node
 
     public override NodeState Evaluate()
     {
+        //Debug.Log("Target Roaming Points Node");
+
         MonsterAI.currentTarget = MonsterAI.currentTargetRoaming;
 
         float dist = Vector3.Distance(currentPos.position, MonsterAI.currentTargetRoaming.transform.position);
 
-        if (dist > 3)
+        if (dist > 1)
         {
+            //Debug.Log("run");
             return NodeState.RUNNING;
         }
         else
         {
-            MonsterAI.currentTargetRoom = null;
-            MonsterAI.currentTargetDoor = null;
-            MonsterAI.currentTargetRoaming = null;
-
+            //Debug.Log("succ");
             return NodeState.SUCCESS;
         }
     }

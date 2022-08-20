@@ -15,8 +15,9 @@ public class RoomScript : MonoBehaviour
     {
         rooms.Add(gameObject);
         roamingTarget = GetComponentInChildren<RoamingTarget>().gameObject;
-        foreach (HidingTarget hidingTarget in transform)
+        foreach (HidingTarget hidingTarget in transform.GetComponentsInChildren<HidingTarget>())
         {
+            //Debug.Log(hidingTarget.gameObject.name);
             hidingTargets.Add(hidingTarget.GetComponent<GameObject>());
         }
     }
@@ -59,29 +60,12 @@ public class RoomScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            //Debug.Log("enter");
-            Enemy.SetCurrentRoom(gameObject);
-            Enemy.CheckLineOfSight();
-            if (Enemy.currentRoom == Player.currentPlayerRoom)
-            {
-                Enemy.ChaseMode();
-            }
-            else if (Enemy.mode == Enemy.Mode.chasing && Enemy.sight == Enemy.DirectSight.noSight)
-            {
-                Enemy.SetRoamingTarget();
-            }
-            else if (Enemy.state != Enemy.RoamingState.idle)
-            {
-                Enemy.ChaseTarget();
-            }
-            Enemy.SetSpeed();
+            MonsterAI.currentTarget = null;
+            MonsterAI.currentEnemyRoom = gameObject;
         }
         if (collision.gameObject.tag == "Player")
         {
             Player.currentPlayerRoom = gameObject;
-            Enemy.CheckPlayerLineOfSight();
-            Enemy.SetSpeed();
-            //Enemy.ChaseTarget();
         }
     }
 }

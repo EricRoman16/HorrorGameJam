@@ -13,14 +13,13 @@ public class Sequence : Node
 
     public override NodeState Evaluate()
     {
-        bool isAnyNodeRunning = false;
         foreach (var node in nodes)
         {
             switch (node.Evaluate())
             {
                 case NodeState.RUNNING:
-                    isAnyNodeRunning = true;
-                    break;
+                    _nodeState = NodeState.RUNNING;
+                    return _nodeState;
                 case NodeState.SUCCESS:
                     break;
                 case NodeState.FAILURE:
@@ -30,7 +29,6 @@ public class Sequence : Node
                     break;
             }
         }
-        _nodeState = isAnyNodeRunning ? NodeState.RUNNING : NodeState.SUCCESS;
-        return _nodeState;
+        return NodeState.SUCCESS;
     }
 }

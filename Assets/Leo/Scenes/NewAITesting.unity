@@ -761,8 +761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
   objectsInRoom: []
+  hidingTargets: []
   roamingTarget: {fileID: 0}
-  hidingTarget: {fileID: 0}
   visible: 0
 --- !u!61 &290140180
 BoxCollider2D:
@@ -981,6 +981,7 @@ GameObject:
   - component: {fileID: 335276831}
   - component: {fileID: 335276829}
   - component: {fileID: 335276828}
+  - component: {fileID: 335276830}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1025,6 +1026,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &335276830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335276827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab1f856fc9968440804c6a8a9a0692d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chasingSpeed: 100
+  roamingSpeed: 50
+  player: {fileID: 1943323602}
 --- !u!114 &335276831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1537,8 +1553,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
   objectsInRoom: []
+  hidingTargets: []
   roamingTarget: {fileID: 0}
-  hidingTarget: {fileID: 0}
   visible: 0
 --- !u!61 &501263691
 BoxCollider2D:
@@ -1665,8 +1681,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
   objectsInRoom: []
+  hidingTargets: []
   roamingTarget: {fileID: 0}
-  hidingTarget: {fileID: 0}
   visible: 0
 --- !u!61 &532585161
 BoxCollider2D:
@@ -2148,8 +2164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
   objectsInRoom: []
+  hidingTargets: []
   roamingTarget: {fileID: 0}
-  hidingTarget: {fileID: 0}
   visible: 0
 --- !u!61 &943535918
 BoxCollider2D:
@@ -2668,8 +2684,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
   objectsInRoom: []
+  hidingTargets: []
   roamingTarget: {fileID: 0}
-  hidingTarget: {fileID: 0}
   visible: 0
 --- !u!61 &1285436567
 BoxCollider2D:
@@ -3504,8 +3520,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
   objectsInRoom: []
+  hidingTargets: []
   roamingTarget: {fileID: 0}
-  hidingTarget: {fileID: 0}
   visible: 0
 --- !u!61 &1705853707
 BoxCollider2D:
@@ -3632,8 +3648,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
   objectsInRoom: []
+  hidingTargets: []
   roamingTarget: {fileID: 0}
-  hidingTarget: {fileID: 0}
   visible: 0
 --- !u!61 &1810442066
 BoxCollider2D:
@@ -3872,8 +3888,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 0}
   objectsInRoom: []
+  hidingTargets: []
   roamingTarget: {fileID: 0}
-  hidingTarget: {fileID: 0}
   visible: 0
 --- !u!61 &1858104119
 BoxCollider2D:

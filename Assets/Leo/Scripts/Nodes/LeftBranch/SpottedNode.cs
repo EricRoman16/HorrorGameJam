@@ -10,10 +10,12 @@ public class SpottedNode : Node
     {
         if (MonsterAI.playerSpotted == false)
         {
+            Debug.Log("Not Spotted");
             return NodeState.FAILURE;
         }
         else
         {
+            Debug.Log("Spotted");
             MonsterAI.chasingPlayer = true;
             return NodeState.SUCCESS;
         }

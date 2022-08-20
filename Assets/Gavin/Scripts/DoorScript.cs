@@ -23,6 +23,7 @@ public class DoorScript : MonoBehaviour
             if (lastSeenDoor == null && MonsterAI.chasingPlayer)
             {
                 lastSeenDoor = transform.GetChild(index).gameObject;
+                lastSeenDoor.GetComponent<SpriteRenderer>().color = Color.cyan;
             }
         }
         if (go.name == "Enemy")

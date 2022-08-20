@@ -8,6 +8,7 @@ public class CheckIfChasingNode : Node
 
     public override NodeState Evaluate()
     {
-        return MonsterAI.chasingPlayer ? NodeState.FAILURE : NodeState.SUCCESS;
+        Debug.Log("Check if chasing " + MonsterAI.chasingPlayer);
+        return MonsterAI.chasingPlayer ? NodeState.SUCCESS : NodeState.FAILURE;
     }
 }

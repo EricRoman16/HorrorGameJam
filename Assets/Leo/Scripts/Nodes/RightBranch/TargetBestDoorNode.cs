@@ -8,6 +8,7 @@ public class TargetBestDoorNode : Node
 
     public override NodeState Evaluate()
     {
+        //Debug.Log("Target Best Door Node");
         TargetBestDoor();
         return nodeState;
     }
@@ -35,10 +36,12 @@ public class TargetBestDoorNode : Node
             {
                 MonsterAI.currentTarget = pathToTarget[0].gameObject;
             }
+            //Debug.Log("Running");
             _nodeState = NodeState.RUNNING;
         }
         else
         {
+            //Debug.Log("Success");
             _nodeState = NodeState.SUCCESS;
         }
     }
