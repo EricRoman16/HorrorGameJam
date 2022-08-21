@@ -31,16 +31,18 @@ public class SimplePlayerMovement : MonoBehaviour
         }
         
         
-        
-        transform.position += new Vector3(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, Input.GetAxisRaw("Vertical") * speed * Time.deltaTime, 0);
+        if(!inCloset)
+            transform.position += new Vector3(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, Input.GetAxisRaw("Vertical") * speed * Time.deltaTime, 0);
     }
     
     public void Closet()
     {
-        if(!inCloset)
-            gameObject.GetComponent<SpriteRenderer>().color = new Vector4(17, 95, 238, 0);//might need to change these values
         if (!inCloset)
-            gameObject.GetComponent<SpriteRenderer>().color = new Vector4(17, 95, 238, 1);//might need to change these values
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            //gameObject.GetComponent<SpriteRenderer>().color = new Vector4(17, 95, 238, 0);//might need to change these values
+        if (inCloset)
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            //gameObject.GetComponent<SpriteRenderer>().color = new Vector4(17, 95, 238, 1);//might need to change these values
         inCloset = !inCloset;
         //this.transform.position += new Vector3(0, 5, 0);
         //Whatever else needs to happen
