@@ -14,7 +14,7 @@ public class KillPlayer : Node
     public override NodeState Evaluate()
     {
         //Add code
-        player.GetComponent<SpriteRenderer>().color = Color.black;
+        //player.GetComponent<SpriteRenderer>().color = Color.black;
         return NodeState.SUCCESS;
     }
 }

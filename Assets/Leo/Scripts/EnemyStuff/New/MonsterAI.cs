@@ -6,15 +6,11 @@ using UnityEngine;
 public class MonsterAI : MonoBehaviour
 {
     public static float currentSpeed;
-    public float chasingSpeed, roamingSpeed;
+    public float chasingSpeed, roamingSpeed, alertedSpeed;
 
-    public static bool playerSpotted, chasingPlayer;
+    public static bool playerSpotted, chasingPlayer, alerted;
 
-    public static GameObject currentEnemyRoom;
-    public static GameObject currentTarget;
-    public static GameObject currentTargetRoom;
-    public static GameObject currentTargetDoor;
-    public static GameObject currentTargetRoaming;
+    public static GameObject currentEnemyRoom, currentTarget, currentTargetRoom, currentTargetDoor, currentTargetRoaming;
 
     private float nextWaypointDist = 3;
     private Path path;
@@ -56,12 +52,17 @@ public class MonsterAI : MonoBehaviour
         TargetRoamingPointNode targetRoamingPointNode = new TargetRoamingPointNode(transform);
         TargetRoomNode targetRoomNode = new TargetRoomNode(roamingSpeed);
         KillHidingNode killHidingNode = new KillHidingNode();
+        IsAlertedDoorNullNode isAlertedDoorNullNode = new IsAlertedDoorNullNode();
+        TargetAlertedDoorNode targetAlertedDoorNode = new TargetAlertedDoorNode(alertedSpeed);
+        TargetBestDoorAlertedNode targetBestDoorAlertedNode = new TargetBestDoorAlertedNode();
 
         //Right Branch
         Sequence roamSequence = new Sequence(new List<Node> {targetRoomNode, targetBestDoorNode, targetRoamingPointNode, stopForSecondsNode});
+        Sequence alertedSequence = new Sequence(new List<Node> {targetAlertedDoorNode, targetBestDoorAlertedNode});
+        Sequence heardDoorSequence = new Sequence(new List<Node> {isAlertedDoorNullNode, alertedSequence});
         Selector isLastSeenDoorNullSelector = new Selector(new List<Node> {targetLastSeenDoorNode, roamSequence});
         Sequence wasChasingSequence = new Sequence(new List<Node> {checkIfChasingNode, isLastSeenDoorNullSelector});
-        Selector wasChasingOrNotSelector = new Selector(new List<Node> {wasChasingSequence, roamSequence});
+        Selector wasChasingOrNotSelector = new Selector(new List<Node> {wasChasingSequence, heardDoorSequence, roamSequence});
         Sequence notSpottedSequence = new Sequence(new List<Node> {notSpottedNode, wasChasingOrNotSelector});
 
         //Left Branch
@@ -76,7 +77,6 @@ public class MonsterAI : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(chasingPlayer);
         SetPlayerSpotted();
         SetColors();
     }
@@ -92,9 +92,9 @@ public class MonsterAI : MonoBehaviour
         {
             currentSpeed = chasingSpeed;
 
-            if (currentTargetRoaming != null)
+            if (currentTarget != null)
             {
-                currentTargetRoaming.GetComponent<SpriteRenderer>().color = Color.red;
+                currentTarget.GetComponent<SpriteRenderer>().color = Color.red;
             }
 
             seeker.StartPath(rb.position, currentTarget.transform.position, OnPathComplete);
@@ -164,7 +164,11 @@ public class MonsterAI : MonoBehaviour
         }
         else if (playerSpotted == false && chasingPlayer)
         {
-            GetComponent<SpriteRenderer>().color = Color.grey;
+            GetComponent<SpriteRenderer>().color = new Color(225, 100, 0);
+        }
+        else if (alerted)
+        {
+            GetComponent<SpriteRenderer>().color = Color.yellow;
         }
         else if (chasingPlayer == false)
         {

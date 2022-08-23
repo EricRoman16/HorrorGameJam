@@ -7,6 +7,8 @@ using System.Linq;
 public class DoorScript : MonoBehaviour
 {
     public static GameObject lastSeenDoor;
+    public bool makesNoise;
+
 
     /// <summary>
     /// 
@@ -20,10 +22,10 @@ public class DoorScript : MonoBehaviour
             StartCoroutine(DelayMove(go, index));
             Camera.main.GetComponent<TransitionScript>().StartTransition();
 
-            if (lastSeenDoor == null && MonsterAI.chasingPlayer)
+            if (MonsterAI.playerSpotted)
             {
                 lastSeenDoor = transform.GetChild(index).gameObject;
-                lastSeenDoor.GetComponent<SpriteRenderer>().color = Color.cyan;
+                //lastSeenDoor.GetComponent<SpriteRenderer>().color = Color.cyan;
             }
         }
         if (go.name == "Enemy")
