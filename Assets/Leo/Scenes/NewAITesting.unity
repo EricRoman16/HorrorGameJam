@@ -1004,7 +1004,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.42793941
 --- !u!50 &335276829
 Rigidbody2D:
   serializedVersion: 4
@@ -1038,8 +1038,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab1f856fc9968440804c6a8a9a0692d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chasingSpeed: 100
+  chasingSpeed: 200
   roamingSpeed: 50
+  alertedSpeed: 100
   player: {fileID: 1943323602}
 --- !u!114 &335276831
 MonoBehaviour:
@@ -1891,7 +1892,7 @@ PrefabInstance:
     - target: {fileID: 6761365833817978405, guid: 30334443e639b804cb89b444ec95a392,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.25
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6761365834102164988, guid: 30334443e639b804cb89b444ec95a392,
         type: 3}
@@ -4452,6 +4453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 6761365834817244695, guid: 30334443e639b804cb89b444ec95a392,
+        type: 3}
+      propertyPath: makesNoise
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30334443e639b804cb89b444ec95a392, type: 3}

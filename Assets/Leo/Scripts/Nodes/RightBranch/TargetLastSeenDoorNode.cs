@@ -13,7 +13,7 @@ public class TargetLastSeenDoorNode : Node
 
     public override NodeState Evaluate()
     {
-        Debug.Log("target last seen door");
+        //Debug.Log("target last seen door");
         if (DoorScript.lastSeenDoor != null)
         {
             MonsterAI.currentTarget = DoorScript.lastSeenDoor;
