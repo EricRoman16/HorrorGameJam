@@ -38,10 +38,14 @@ public class SimplePlayerMovement : MonoBehaviour
     public void Closet()
     {
         if (!inCloset)
+        {
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
             //gameObject.GetComponent<SpriteRenderer>().color = new Vector4(17, 95, 238, 0);//might need to change these values
         if (inCloset)
+        {
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
             //gameObject.GetComponent<SpriteRenderer>().color = new Vector4(17, 95, 238, 1);//might need to change these values
         inCloset = !inCloset;
         //this.transform.position += new Vector3(0, 5, 0);

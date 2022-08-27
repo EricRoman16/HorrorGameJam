@@ -8,7 +8,7 @@ public class IsHidingNode : Node
 
     public override NodeState Evaluate()
     {
-        if (Player.playerHiding == false)
+        if (Player.inCloset == false)
         {
             return NodeState.FAILURE;
         }

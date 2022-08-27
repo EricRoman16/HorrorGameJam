@@ -6,23 +6,26 @@ using UnityEngine.UI;
 public class ClosetScript : MonoBehaviour
 {
     public Text KeyIndicator;
+    private GameObject hidingTarget;
+    private bool nearPlayer;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        hidingTarget = GetComponentInChildren<HidingTarget>().gameObject;
         KeyIndicator.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        ClosetCheck();
     }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<SimplePlayerMovement>().nearCloset = true;
+            Player.nearCloset = true;
+            nearPlayer = true;
             KeyIndicator.enabled = true;
         }
 
@@ -31,8 +34,18 @@ public class ClosetScript : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.GetComponent<SimplePlayerMovement>().nearCloset = false;
+            Player.nearCloset = false;
+            nearPlayer = false;
             KeyIndicator.enabled = false;
+            Player.currentHidingSpot = null;
+        }
+    }
+
+    private void ClosetCheck()
+    {
+        if (nearPlayer && Player.inCloset)
+        {
+            Player.currentHidingSpot = hidingTarget;
         }
     }
 }

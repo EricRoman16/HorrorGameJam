@@ -77,6 +77,7 @@ public class MonsterAI : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log(playerSpotted + " " + Player.inCloset + " " + Player.playerHidden);
         SetPlayerSpotted();
         SetColors();
     }
@@ -94,7 +95,7 @@ public class MonsterAI : MonoBehaviour
 
             if (currentTarget != null)
             {
-                currentTarget.GetComponent<SpriteRenderer>().color = Color.red;
+                //currentTarget.GetComponent<SpriteRenderer>().color = Color.red;
             }
 
             seeker.StartPath(rb.position, currentTarget.transform.position, OnPathComplete);
