@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D rb2;
     public float moveSpeed;
-    public static bool playerHidden, inCloset, nearCloset;
+    public static bool playerHidden, inCloset, nearCloset, isDead;
     public static GameObject currentPlayerRoom, currentHidingSpot;
 
     private void Awake()
@@ -16,12 +16,18 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb2.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, Input.GetAxisRaw("Vertical") * moveSpeed);
+        if (isDead == false)
+        {
+            rb2.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, Input.GetAxisRaw("Vertical") * moveSpeed);
+        }
     }
 
     private void Update()
     {
-        ClosetCheck();
+        if (isDead == false)
+        {
+            ClosetCheck();
+        }
     }
 
     private void ClosetCheck()
@@ -68,5 +74,15 @@ public class Player : MonoBehaviour
         }
 
         inCloset = !inCloset;
+    }
+
+    public void Respawn()
+    {
+        if (inCloset)
+        {
+            ClosetInteract();
+        }
+        isDead = false;
+        transform.position = new Vector3(-5, 5, -2);
     }
 }

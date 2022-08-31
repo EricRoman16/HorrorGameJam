@@ -8,7 +8,7 @@ public class KillHidingNode : Node
 
     public override NodeState Evaluate()
     {
-        //Add code
+        Player.isDead = true;
         return NodeState.SUCCESS;
     }
 }

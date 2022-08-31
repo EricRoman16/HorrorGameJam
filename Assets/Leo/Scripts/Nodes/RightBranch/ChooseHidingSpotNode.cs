@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class ChooseHidingSpotNode : Node
 {
-    private GameObject currentRoom;
     private Transform currentPos;
 
-    public ChooseHidingSpotNode(GameObject currentEnemyRoom, Transform currentPos) 
+    public ChooseHidingSpotNode(Transform currentPos) 
     { 
-        currentRoom = currentEnemyRoom;
         this.currentPos = currentPos;
     }
 
     public override NodeState Evaluate()
     {
-        MonsterAI.currentTarget = ChooseHidingSpot();
+        if (MonsterAI.targetHidingSpot == null)
+        {
+            MonsterAI.currentTarget = ChooseHidingSpot();
+        }
 
-        float dist = Vector3.Distance(currentPos.position, ChooseHidingSpot().transform.position);
+        float dist = Vector3.Distance(currentPos.position, MonsterAI.currentTarget.transform.position);
 
-        if (dist > 3)
+        if (dist > 1)
         {
             return NodeState.RUNNING;
         }
@@ -31,10 +32,10 @@ public class ChooseHidingSpotNode : Node
 
     private GameObject ChooseHidingSpot()
     {
-        List<GameObject> hidingSpots = currentRoom.GetComponent<RoomScript>().hidingTargets;
+        List<GameObject> hidingSpots = Player.currentPlayerRoom.GetComponent<RoomScript>().hidingTargets;
 
         int randomHidingSpot = Random.Range(0, hidingSpots.Count);
 
-        return hidingSpots[randomHidingSpot];
+        return MonsterAI.targetHidingSpot = hidingSpots[randomHidingSpot];
     }
 }

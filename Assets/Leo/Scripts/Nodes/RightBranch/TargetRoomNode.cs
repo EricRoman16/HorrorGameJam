@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class TargetRoomNode : Node
 {
@@ -16,6 +17,7 @@ public class TargetRoomNode : Node
         //Debug.Log("Target Room Node");
         MonsterAI.currentSpeed = roamSpeed;
         MonsterAI.chasingPlayer = false;
+        StopForSecondsNode.done = false;
         FindRandomRoom();
         return NodeState.SUCCESS;
     }

@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class RoomScript : MonoBehaviour
 {
-    public BoxCollider2D boxCollider;
-    public List<SpriteRenderer> objectsInRoom = new List<SpriteRenderer>();
+    //public BoxCollider2D boxCollider;
+    [HideInInspector] public List<SpriteRenderer> objectsInRoom = new List<SpriteRenderer>();
     public static List<GameObject> rooms = new List<GameObject>();
     [HideInInspector] public List<GameObject> hidingTargets = new List<GameObject>();
     [HideInInspector] public GameObject roamingTarget;
-    public bool visible = false;
+    [HideInInspector] public bool visible = false;
 
     private void Awake()
     {
         rooms.Add(gameObject);
         roamingTarget = GetComponentInChildren<RoamingTarget>().gameObject;
-        foreach (HidingTarget hidingTarget in transform.GetComponentsInChildren<HidingTarget>())
+        foreach (HidingTarget hidingTarget in GetComponentsInChildren<HidingTarget>())
         {
             //Debug.Log(hidingTarget.gameObject.name);
-            hidingTargets.Add(hidingTarget.GetComponent<GameObject>());
+            hidingTargets.Add(hidingTarget.GetComponent<Transform>().gameObject);
         }
     }
 

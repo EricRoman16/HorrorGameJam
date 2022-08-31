@@ -13,8 +13,7 @@ public class KillPlayer : Node
 
     public override NodeState Evaluate()
     {
-        //Add code
-        //player.GetComponent<SpriteRenderer>().color = Color.black;
+        Player.isDead = true;
         return NodeState.SUCCESS;
     }
 }

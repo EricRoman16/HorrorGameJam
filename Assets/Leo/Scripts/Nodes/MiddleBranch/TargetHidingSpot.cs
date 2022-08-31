@@ -17,7 +17,7 @@ public class TargetHidingSpot : Node
 
         float dist = Vector3.Distance(currentPos.position, Player.currentHidingSpot.transform.position);
 
-        if (dist > 3)
+        if (dist > 1)
         {
             return NodeState.RUNNING;
         }

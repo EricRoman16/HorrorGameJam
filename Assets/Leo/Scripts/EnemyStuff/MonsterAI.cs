@@ -10,7 +10,7 @@ public class MonsterAI : MonoBehaviour
 
     public static bool playerSpotted, chasingPlayer, alerted;
 
-    public static GameObject currentEnemyRoom, currentTarget, currentTargetRoom, currentTargetDoor, currentTargetRoaming;
+    public static GameObject currentEnemyRoom, currentTarget, currentTargetRoom, currentTargetDoor, currentTargetRoaming, targetHidingSpot;
 
     private float nextWaypointDist = 3;
     private Path path;
@@ -30,23 +30,23 @@ public class MonsterAI : MonoBehaviour
 
         ConstructBehaviourTree();
         InvokeRepeating("UpdatePath", 0f, 0.1f);
-        InvokeRepeating("RunTree", 0f, 0.01f);
+        //InvokeRepeating("RunTree", 0f, 0.01f);
     }
 
     private void ConstructBehaviourTree()
     {
         //Nodes
         IsHidingNode isHidingNode = new IsHidingNode();
-        KillPlayer killPlayer = new KillPlayer(player);
+        KillPlayer killPlayerNode = new KillPlayer(player);
         SpottedNode spottedNode = new SpottedNode();
         TargetHidingSpot targetHidingSpot = new TargetHidingSpot(transform);
         TargetPlayer targetPlayer = new TargetPlayer(chasingSpeed, player, transform);
         CheckIfChasingNode checkIfChasingNode = new CheckIfChasingNode();
         CheckIfSameRoomNode checkIfSameRoomNode = new CheckIfSameRoomNode();
-        ChooseHidingSpotNode chooseHidingSpotNode = new ChooseHidingSpotNode(currentEnemyRoom, transform);
+        ChooseHidingSpotNode chooseHidingSpotNode = new ChooseHidingSpotNode(transform);
         FindHidingPlayerNode findHidingPlayerNode = new FindHidingPlayerNode();
         NotSpottedNode notSpottedNode = new NotSpottedNode();
-        StopForSecondsNode stopForSecondsNode = new StopForSecondsNode(roamingSpeed);
+        StopForSecondsNode stopForSecondsNode = new StopForSecondsNode(roamingSpeed, rb);
         TargetBestDoorNode targetBestDoorNode = new TargetBestDoorNode();
         TargetLastSeenDoorNode targetLastSeenDoorNode = new TargetLastSeenDoorNode(transform);
         TargetRoamingPointNode targetRoamingPointNode = new TargetRoamingPointNode(transform);
@@ -55,31 +55,41 @@ public class MonsterAI : MonoBehaviour
         IsAlertedDoorNullNode isAlertedDoorNullNode = new IsAlertedDoorNullNode();
         TargetAlertedDoorNode targetAlertedDoorNode = new TargetAlertedDoorNode(alertedSpeed);
         TargetBestDoorAlertedNode targetBestDoorAlertedNode = new TargetBestDoorAlertedNode();
+        IsPlayerDeadNode isPlayerDeadNode = new IsPlayerDeadNode(rb);
 
         //Right Branch
         Sequence roamSequence = new Sequence(new List<Node> {targetRoomNode, targetBestDoorNode, targetRoamingPointNode, stopForSecondsNode});
         Sequence alertedSequence = new Sequence(new List<Node> {targetAlertedDoorNode, targetBestDoorAlertedNode});
         Sequence heardDoorSequence = new Sequence(new List<Node> {isAlertedDoorNullNode, alertedSequence});
-        Selector isLastSeenDoorNullSelector = new Selector(new List<Node> {targetLastSeenDoorNode, roamSequence});
+        Sequence isPlayerInHidingSpotSequence = new Sequence(new List<Node> {findHidingPlayerNode, killPlayerNode});
+        Selector checkForPlayerSelector = new Selector(new List<Node> {isPlayerInHidingSpotSequence, roamSequence});
+        Sequence playerHidingSequence = new Sequence(new List<Node> {chooseHidingSpotNode, checkForPlayerSelector});
+        Sequence playerInSameRoomSequence = new Sequence(new List<Node> {checkIfSameRoomNode, playerHidingSequence});
+        Sequence isPlayerInSameRoomSequence = new Sequence(new List<Node> {stopForSecondsNode, playerInSameRoomSequence, roamSequence});
+        Selector isLastSeenDoorNullSelector = new Selector(new List<Node> {targetLastSeenDoorNode, isPlayerInSameRoomSequence});
         Sequence wasChasingSequence = new Sequence(new List<Node> {checkIfChasingNode, isLastSeenDoorNullSelector});
         Selector wasChasingOrNotSelector = new Selector(new List<Node> {wasChasingSequence, heardDoorSequence, roamSequence});
         Sequence notSpottedSequence = new Sequence(new List<Node> {notSpottedNode, wasChasingOrNotSelector});
 
-        //Left Branch
-        Sequence isNotHidingSequence = new Sequence(new List<Node> {targetPlayer, killPlayer});
+        //Middle Branch
+        Sequence isNotHidingSequence = new Sequence(new List<Node> {targetPlayer, killPlayerNode});
         Sequence isHidingSequence = new Sequence(new List<Node> {isHidingNode, targetHidingSpot, killHidingNode});
         Selector hidingOrNotSelector = new Selector(new List<Node> {isHidingSequence, isNotHidingSequence});
         Sequence spottedSequence = new Sequence(new List<Node> {spottedNode, hidingOrNotSelector});
 
         //Top Node
-        topSelector = new Selector(new List<Node> {spottedSequence, notSpottedSequence});
+        topSelector = new Selector(new List<Node> {isPlayerDeadNode, spottedSequence, notSpottedSequence});
     }
 
     private void Update()
     {
-        //Debug.Log(playerSpotted + " " + Player.inCloset + " " + Player.playerHidden);
         SetPlayerSpotted();
         SetColors();
+    }
+
+    private void LateUpdate()
+    {
+        RunTree();
     }
 
     private void RunTree()
@@ -92,11 +102,6 @@ public class MonsterAI : MonoBehaviour
         if (currentTarget != null && seeker.IsDone())
         {
             currentSpeed = chasingSpeed;
-
-            if (currentTarget != null)
-            {
-                //currentTarget.GetComponent<SpriteRenderer>().color = Color.red;
-            }
 
             seeker.StartPath(rb.position, currentTarget.transform.position, OnPathComplete);
         }
@@ -157,6 +162,11 @@ public class MonsterAI : MonoBehaviour
         }
     }
 
+    public void Respawn()
+    {
+        transform.position = new Vector3(5, -20, -2);
+    }
+
     private void SetColors()
     {
         if (playerSpotted)
@@ -165,7 +175,7 @@ public class MonsterAI : MonoBehaviour
         }
         else if (playerSpotted == false && chasingPlayer)
         {
-            GetComponent<SpriteRenderer>().color = new Color(225, 100, 0);
+            GetComponent<SpriteRenderer>().color = new Color(1, 0.6f, 0);
         }
         else if (alerted)
         {

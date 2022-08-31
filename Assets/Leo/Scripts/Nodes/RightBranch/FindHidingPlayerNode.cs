@@ -8,7 +8,13 @@ public class FindHidingPlayerNode : Node
 
     public override NodeState Evaluate()
     {
-        //Add Code
-        return NodeState.RUNNING;
+        if (MonsterAI.targetHidingSpot == Player.currentHidingSpot)
+        {
+            return NodeState.SUCCESS;
+        }
+        else
+        {
+            return NodeState.FAILURE;
+        }
     }
 }
