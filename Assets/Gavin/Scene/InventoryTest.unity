@@ -680,8 +680,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 655b915502b852848811e03792316102,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249442, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -695,12 +694,12 @@ PrefabInstance:
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemName
-      value: Cube
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemDescription
-      value: A cube that may destroy the world through facist ideology
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249454, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
@@ -811,6 +810,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ItemSlot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720874003422249455, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_TagString
+      value: ItemSlot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}
@@ -1217,8 +1221,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 106ab0e6103f4e449bbe0534a354530e,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249442, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1232,12 +1235,12 @@ PrefabInstance:
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemName
-      value: Cylinder
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemDescription
-      value: 'This shape goes in the square hole. '
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249454, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
@@ -1347,6 +1350,11 @@ PrefabInstance:
     - target: {fileID: 2720874003422249455, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: m_Name
+      value: ItemSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720874003422249455, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_TagString
       value: ItemSlot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1850,8 +1858,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: e4f69bc42a429e448b9515d6c919ebf1,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249442, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1865,13 +1872,12 @@ PrefabInstance:
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemName
-      value: Gun
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemDescription
-      value: 'Little gun so much death and destruction packed into a device that
-        can fit into ones pocket. '
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249454, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
@@ -1983,6 +1989,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2720874003422249455, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_TagString
+      value: ItemSlot
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}
 --- !u!1001 &789427165
@@ -1996,8 +2007,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 03366b7ef60f5204fb2d9decc069ff1e,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249442, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2011,13 +2021,12 @@ PrefabInstance:
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemName
-      value: Skull
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemDescription
-      value: 'A skull, not much use but is very creepy. Looks very very old, probably
-        older than your mom. '
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249454, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
@@ -2129,6 +2138,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2720874003422249455, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_TagString
+      value: ItemSlot
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}
 --- !u!1001 &818367381
@@ -2142,8 +2156,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1c0a795ae7cff04499ec5afd298122d2,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249442, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2157,12 +2170,12 @@ PrefabInstance:
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemName
-      value: Sad face
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemDescription
-      value: 'The face of your mom when I leave. '
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249454, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
@@ -2273,6 +2286,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ItemSlot (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720874003422249455, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_TagString
+      value: ItemSlot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}
@@ -2287,8 +2305,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: db77b957d7a5f2a4cb4f61ee9df89e10,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249442, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2302,12 +2319,12 @@ PrefabInstance:
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemName
-      value: Happy Face
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemDescription
-      value: What your mom looks like after I...
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249454, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
@@ -2418,6 +2435,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ItemSlot (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720874003422249455, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_TagString
+      value: ItemSlot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}
@@ -2680,6 +2702,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8cad16dff287b04596b9de5d3082c8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemInfo:
+  - name: Cube
+    description: A cube that may destroy the world through facist ideology
+    icon: {fileID: 21300000, guid: 655b915502b852848811e03792316102, type: 3}
+  - name: Cylinder
+    description: This shape goes in the square hole.
+    icon: {fileID: 21300000, guid: 106ab0e6103f4e449bbe0534a354530e, type: 3}
+  - name: Gun
+    description: Little gun so much death and destruction packed into a device that        
+      can fit into ones pocket.
+    icon: {fileID: 21300000, guid: e4f69bc42a429e448b9515d6c919ebf1, type: 3}
+  - name: Skull
+    description: A skull, not much use but is very creepy. Looks very very old, probably        
+      older than your mom.
+    icon: {fileID: 21300000, guid: 03366b7ef60f5204fb2d9decc069ff1e, type: 3}
+  - name: Sad Face
+    description: The face of your mom when I leave.
+    icon: {fileID: 21300000, guid: 1c0a795ae7cff04499ec5afd298122d2, type: 3}
+  - name: Happy Face
+    description: What your mom looks like after I...
+    icon: {fileID: 21300000, guid: db77b957d7a5f2a4cb4f61ee9df89e10, type: 3}
+  - name: Mouse
+    description: Used to control a computer. Looks work and dirty.
+    icon: {fileID: 21300000, guid: 1753da5780d2a2340bc30baf8c1f944d, type: 3}
+  - name: Key
+    description: Used to unlock a room probably
+    icon: {fileID: 21300000, guid: c0a7dcb7269a7ca459bb629123068872, type: 3}
+  - name: Different Key
+    description: A key, used to unlock a drawer.
+    icon: {fileID: 21300000, guid: c0a7dcb7269a7ca459bb629123068872, type: 3}
 --- !u!1 &1033189053
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,8 +2869,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1753da5780d2a2340bc30baf8c1f944d,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249442, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2832,12 +2883,12 @@ PrefabInstance:
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemName
-      value: Mouse
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemDescription
-      value: Used to control a computer. Looks work and dirty.
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249454, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
@@ -2948,6 +2999,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ItemSlot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720874003422249455, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_TagString
+      value: ItemSlot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}
@@ -4382,11 +4438,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1299788186}
     m_Modifications:
+    - target: {fileID: 2720874003422249441, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249442, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1020109190}
+    - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: itemName
+      value: ' '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: itemDescription
+      value: ' '
+      objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249454, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4495,6 +4566,11 @@ PrefabInstance:
     - target: {fileID: 2720874003422249455, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: m_Name
+      value: ItemSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720874003422249455, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_TagString
       value: ItemSlot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
