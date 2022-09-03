@@ -15,6 +15,7 @@ public class TargetRoomNode : Node
     public override NodeState Evaluate()
     {
         //Debug.Log("Target Room Node");
+        MonsterAI.targetHidingSpot = null;
         MonsterAI.currentSpeed = roamSpeed;
         MonsterAI.chasingPlayer = false;
         StopForSecondsNode.done = false;

@@ -30,6 +30,8 @@ public class DoorScript : MonoBehaviour
         }
         if (go.name == "Enemy")
         {
+            MonsterAI.currentTarget = null;
+
             go.transform.position = transform.GetChild(1 - index).GetChild(0).position;
 
             if (lastSeenDoor != null)
