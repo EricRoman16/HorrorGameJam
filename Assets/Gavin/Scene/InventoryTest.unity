@@ -816,6 +816,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: ItemSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1020109190}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowItemData
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}
 --- !u!1 &260981726
@@ -849,7 +859,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12e8ba3ab3849d4d99d4d9e40a6b07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider: {fileID: 0}
   objectsInRoom: []
   hidingTargets: []
   roamingTarget: {fileID: 0}
@@ -1115,7 +1124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12e8ba3ab3849d4d99d4d9e40a6b07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider: {fileID: 0}
   objectsInRoom: []
   hidingTargets: []
   roamingTarget: {fileID: 0}
@@ -1235,12 +1243,12 @@ PrefabInstance:
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemName
-      value: ' '
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249443, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: itemDescription
-      value: ' '
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249454, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
@@ -1357,6 +1365,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: ItemSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1020109190}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowItemData
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}
 --- !u!1 &410391819
@@ -1390,7 +1408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12e8ba3ab3849d4d99d4d9e40a6b07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider: {fileID: 0}
   objectsInRoom: []
   hidingTargets: []
   roamingTarget: {fileID: 0}
@@ -1994,6 +2011,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: ItemSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1020109190}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowItemData
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}
 --- !u!1001 &789427165
@@ -2142,6 +2169,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: ItemSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1020109190}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowItemData
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}
@@ -2292,6 +2329,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: ItemSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1020109190}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowItemData
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}
 --- !u!1001 &872080589
@@ -2440,6 +2487,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: ItemSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1020109190}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowItemData
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}
@@ -2710,11 +2767,11 @@ MonoBehaviour:
     description: This shape goes in the square hole.
     icon: {fileID: 21300000, guid: 106ab0e6103f4e449bbe0534a354530e, type: 3}
   - name: Gun
-    description: Little gun so much death and destruction packed into a device that        
+    description: Little gun so much death and destruction packed into a device that
       can fit into ones pocket.
     icon: {fileID: 21300000, guid: e4f69bc42a429e448b9515d6c919ebf1, type: 3}
   - name: Skull
-    description: A skull, not much use but is very creepy. Looks very very old, probably        
+    description: A skull, not much use but is very creepy. Looks very very old, probably
       older than your mom.
     icon: {fileID: 21300000, guid: 03366b7ef60f5204fb2d9decc069ff1e, type: 3}
   - name: Sad Face
@@ -2763,7 +2820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12e8ba3ab3849d4d99d4d9e40a6b07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider: {fileID: 0}
   objectsInRoom: []
   hidingTargets: []
   roamingTarget: {fileID: 0}
@@ -3004,6 +3060,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: ItemSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1020109190}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowItemData
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}
@@ -3249,7 +3315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12e8ba3ab3849d4d99d4d9e40a6b07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider: {fileID: 0}
   objectsInRoom: []
   hidingTargets: []
   roamingTarget: {fileID: 0}
@@ -3798,7 +3863,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12e8ba3ab3849d4d99d4d9e40a6b07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider: {fileID: 0}
   objectsInRoom: []
   hidingTargets: []
   roamingTarget: {fileID: 0}
@@ -4005,7 +4069,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12e8ba3ab3849d4d99d4d9e40a6b07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider: {fileID: 0}
   objectsInRoom: []
   hidingTargets: []
   roamingTarget: {fileID: 0}
@@ -4178,7 +4241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12e8ba3ab3849d4d99d4d9e40a6b07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider: {fileID: 0}
   objectsInRoom: []
   hidingTargets: []
   roamingTarget: {fileID: 0}
@@ -4438,10 +4500,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1299788186}
     m_Modifications:
+    - target: {fileID: 846697690110749647, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249441, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
       propertyPath: m_Sprite
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2720874003422249442, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_Transition
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2720874003422249442, guid: 80ec35483bd2d794a8193c2208865e3a,
         type: 3}
@@ -4572,6 +4644,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: ItemSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1020109190}
+    - target: {fileID: 7823801060753236613, guid: 80ec35483bd2d794a8193c2208865e3a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowItemData
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80ec35483bd2d794a8193c2208865e3a, type: 3}

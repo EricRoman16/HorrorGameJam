@@ -60,7 +60,7 @@ public class ItemManager : MonoBehaviour
             {
                 break;
             }
-            itemSlots[i].GetComponent<Image>().sprite = acquiredItems[i].icon;
+            itemSlots[i].GetComponentInChildren<Image>().sprite = acquiredItems[i].icon;
             itemSlots[i].GetComponent<ItemData>().itemName = acquiredItems[i].name;
             itemSlots[i].GetComponent<ItemData>().itemDescription = acquiredItems[i].description;
         }
