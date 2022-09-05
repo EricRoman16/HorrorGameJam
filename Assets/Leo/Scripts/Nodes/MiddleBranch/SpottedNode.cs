@@ -16,6 +16,8 @@ public class SpottedNode : Node
         else
         {
             //Debug.Log("Spotted");
+            StopForSecondsNode.done = false;
+            MonsterAI.targetHidingSpot = null;
             MonsterAI.alerted = false;
             DoorCollision.alertedRoom = null;
             MonsterAI.chasingPlayer = true;

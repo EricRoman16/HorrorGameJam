@@ -83,6 +83,7 @@ public class MonsterAI : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(targetHidingSpot == null);
         SetPlayerSpotted();
         SetColors();
     }
