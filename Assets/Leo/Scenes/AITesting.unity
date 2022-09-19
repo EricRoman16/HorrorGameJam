@@ -5306,6 +5306,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2778501189725680489, guid: d2c0b56976034ec4ebdd216e4cb4231f,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.3125
+      objectReference: {fileID: 0}
+    - target: {fileID: 2778501189725680489, guid: d2c0b56976034ec4ebdd216e4cb4231f,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2778501189725680489, guid: d2c0b56976034ec4ebdd216e4cb4231f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5294282090054066285, guid: be880af40a37b7b488a78e669b4b8bf8,
+        type: 3}
+    - target: {fileID: 2778501189725680489, guid: d2c0b56976034ec4ebdd216e4cb4231f,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2778501189725680493, guid: d2c0b56976034ec4ebdd216e4cb4231f,
         type: 3}
       propertyPath: m_Name
@@ -5368,7 +5389,7 @@ PrefabInstance:
     - target: {fileID: 6218779394758189662, guid: ad512e480d9e2cc4d92c9168ba721b7e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6218779394758189668, guid: ad512e480d9e2cc4d92c9168ba721b7e,
         type: 3}

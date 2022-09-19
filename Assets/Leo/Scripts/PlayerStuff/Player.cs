@@ -53,7 +53,6 @@ public class Player : MonoBehaviour
         if ((moveX == 0 && moveY == 0) && moveDirection.x != 0 || moveDirection.y != 0)
         {
             lastMoveDirection = moveDirection;
-            Debug.Log("set");
         }
 
         moveDirection = playerBinds.Player.Move.ReadValue<Vector2>();
