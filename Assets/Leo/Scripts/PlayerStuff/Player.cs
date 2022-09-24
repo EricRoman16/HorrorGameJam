@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
         ani = GetComponent<Animator>();
         playerBinds = new PlayerBinds();
         playerBinds.Player.Enable();
+        playerBinds.UI.Disable();
+        Cursor.visible = false;
     }
 
     private void FixedUpdate()
@@ -80,7 +82,7 @@ public class Player : MonoBehaviour
             //gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
         }
 
-        if ((nearCloset || inCloset) && Input.GetKeyDown(KeyCode.E))
+        if ((nearCloset || inCloset) && playerBinds.Player.Interact.triggered)
         {
             ClosetInteract();
         }
@@ -117,10 +119,8 @@ public class Player : MonoBehaviour
 
     public void Respawn()
     {
-        if (inCloset)
-        {
-            ClosetInteract();
-        }
+        playerHidden = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
         isDead = false;
         transform.position = new Vector3(-5, 5, -2);
     }
